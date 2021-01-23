@@ -1,0 +1,12 @@
+// https://knowledge.udacity.com/questions/413762
+
+{
+    "presets": [
+          [
+              "@babel/preset-env",
+              {
+                  "exclude": ["transform-regenerator"]
+              }
+          ]
+      ]
+  }

@@ -9,8 +9,6 @@ let d = new Date();
 let newDate = d.getDate()+' '+ monthNames[d.getMonth()]+' '+ d.getFullYear();
 
 
-// add eventlistener with callback action
-document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(e) {
     const newZip = document.getElementById('zip').value;
