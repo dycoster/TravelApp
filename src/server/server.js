@@ -1,3 +1,5 @@
+projectData = {};
+
 // Require Express to run server and routes
 const express = require('express');
 
@@ -32,6 +34,11 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
+// Add a GET route that returns the projectData object
+app.get('/all', function (req, res) {
+    res.send(projectData);
+  })
+
 // Add POST Route that adds incoming data to projectData
 app.post('/add', addData);
 
@@ -42,5 +49,6 @@ function addData (req, res) {
     projectData.user_response = req.body.user_response;
     projectData.icon = req.body.icon;
     res.send(projectData);
+    console.log(projectData);
 }
 

@@ -10,6 +10,9 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
+    devServer: {
+        port: 3000
+      },
     mode: 'development',
     devtool: 'source-map',
     module: {
