@@ -1,176 +1,91 @@
-body{
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    padding: 0;
+* {
     margin: 0;
+    border: 0;
     box-sizing: border-box;
 }
-
-#app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-    "header header"
-    "result result"
-    "result result"
-    "column-left column-right"
-    "footer footer";
-    height:100vh;
-    background: linear-gradient(#83C9EE, white);
-    color: #1B4F6B;
-    justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
-
-.holder {
+$primary-font: 'Heebo', sans-serif;
+$title-font: 'Lobster', cursive;
+$bg:rgba($color: #EBF4FA, $alpha: 0.3);
+$contrast: #F4A15D;
+body {
+    font-family: $primary-font;
+    font-size: 16px;
+    background: url("https://cdn.pixabay.com/photo/2015/10/12/14/55/airplane-983991_960_720.jpg") fixed no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
 }
 
-.entry {
-    background: linear-gradient(#FFB759, #EB9E3B);
-    grid-area: result;
+header {
+    font-family: $title-font;
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* #entryHolder{
-
-} */
-
-#date{
-    font-style: italic;
-}
-
-/* #temp{
-
-}
-
-#content{
-
-} */
-
-.headline {
-    grid-area: header;
     justify-content: center;
     align-items: center;
-}
+    width: 100%;
+    height: 4rem;
 
-.title {
-    margin-bottom: 2rem;
-    color: honeydew;
-}
-
-.zip {
-    grid-area: column-left;
-    margin-bottom: 2rem;
-}
-
-.feel {
-    grid-area: column-right;
-    margin-bottom: 2rem;
-}
-
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
-}
-
-input{
-    display:block;
-    height: 60px;
-    width: 240px;
-    background:#83C9EE;
-    color: #9E5D08;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-}
-
-button{
-    width: 240px;
-    height: 80px;
-    background: #3b4a6b;
-    color: #e47c40;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
-    cursor: pointer;
-}
-
-button:hover{
-    background: #186F9E;
-    color: whitesmoke;
-}
-
-button:active{
-    color: #9E5D08;
-}
-
-h1{
-    font-size: 36px;
-}
-
-textarea{
-    background: #83C9EE;
-    color: #9E5D08;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-}
-
-footer {
-    grid-area: footer;
-    font-size: 12px;
-    text-align: end;
-    color:#1B4F6B;
-}
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */
-    color:#1B4F6B;
-    font-family: 'Oswald', sans-serif;
-
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color:#1B4F6B;
-    font-family: 'Oswald', sans-serif;
-
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #1B4F6B;
-    font-family: 'Oswald', sans-serif;
-
-}
-
-@media only screen and (max-width: 700px) {
-    #app {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-    "header"
-    "column-left"
-    "column-right"
-    "result"
-    "result";
-    }
-
-    .holder {
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+    h1 {
+        align-self: center;
     }
 }
+
+#app {
+    display: flex;
+    flex-direction: row;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    background: $bg;
+    max-width: 320px;
+    align-items: flex-start;
+    padding: 50px;
+    margin: 50px;
+    border-radius: 10px;
+
+    h2{
+        font-family: $title-font;
+    }
+
+    form {
+        margin-top: 1rem;
+
+        div {
+            padding: 1rem;
+        }
+    }
+}
+.submit {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#submit {
+    padding: 5px 20px;
+    color: white;
+    background-color: $contrast;
+    border-radius: 5px;
+}
+
+#submit:hover {
+        background-color: #E06D10;
+}
+
+#submit:active {
+        background-color: white;
+        color: #E06D10;
+    }
+
+#results {
+    display: flex;
+    flex-direction: column;
+    background: $bg;
+    max-width: 320px;
+    align-items: flex-end;
+    padding: 50px;
+    margin: 50px;
+    border-radius: 10px;
+}
+
+
+

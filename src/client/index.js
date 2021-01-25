@@ -1,8 +1,8 @@
-import { performAction } from './js/app'
+// import { performAction } from './js/app'
 import './styles/body.scss'
 
 // add eventlistener with callback action
-document.getElementById('generate').addEventListener('click', performAction);
+// document.getElementById('generate').addEventListener('click', performAction);
 
 // moved to index.js as suggested in https://knowledge.udacity.com/questions/435694
 
@@ -15,6 +15,6 @@ document.getElementById('generate').addEventListener('click', performAction);
     //     });
     // }
 
-    export {
-        performAction
-    }
+    // export {
+    //     performAction
+    // }

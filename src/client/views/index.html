@@ -3,32 +3,43 @@
   <head>
     <meta charset="UTF-8">
     <title>Destination App</title>
-    <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Lobster&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+    <header>
+      <h1>Travel Planner</h1>
+    </header>
     <div id = "app">
-      <div class ="holder headline">Weather Journal App</div>
-      <div class ="holder zip">
-        <label for="zip">Enter Zipcode here</label>
-        <input type="text" id="zip" placeholder="Enter zip code here">
-      </div>
-      <div class ="holder feel">
-        <label for="feelings">How are you feeling today?</label>
-        <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-        <button id="generate" type = "submit"> Generate </button>
-      </div>
-      <div class ="holder entry">
-          <div class = "title">Most Recent Entry</div>
-          <div id = "entryHolder">
-            <div id = "date"></div>
-            <div id = "name"></div>
-            <div id = "temp"></div>
-            <div id = "content"></div>
+      <section class="userInputSection">
+        <div>
+          <h2>Let's find out all about your trip</h2>
+        </div>
+        <!-- From Lesson 4 -->
+        <form action="" id="formInput" class="userInputForm" onsubmit="return Client.handleSubmit(event)">
+          <div class="destination">
+            <label for="location">Where are you going?</label>
+            <input type="text" name="location" id="uiLocation" placeholder="e.g. Tokyo" required>
           </div>
-          <img id = "icon">
-      </div>
-      <footer>by David Coster</footer>
-    </div>
+          <div class="departure">
+            <label for="departure">Departure Date:</label>
+            <input type="date" name="departure" id="uiDeparture" required>
+          </div>
+          <div class="return">
+            <label for="departure">Return Date:</label>
+            <input type="date" name="departure" id="uiDeparture" required>
+          </div>
+          <div class="submit">
+            <input type="submit" id="submit" name="" value="Let's Go" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+          </div>
+        </form>
+      </section>
+      <section id="results">
+        <div id="locationResult"></div>
+        <div id="iconResult"></div>
+        <div id="tempResult"></div>
+    </section>
   </body>
 </html>
