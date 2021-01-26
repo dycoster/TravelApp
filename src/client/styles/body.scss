@@ -3,10 +3,11 @@
     border: 0;
     box-sizing: border-box;
 }
-$primary-font: 'Heebo', sans-serif;
+$primary-font: 'Quicksand', sans-serif;
 $title-font: 'Lobster', cursive;
 $bg:rgba($color: #EBF4FA, $alpha: 0.3);
 $contrast: #F4A15D;
+
 body {
     font-family: $primary-font;
     font-size: 16px;
@@ -32,13 +33,15 @@ header {
 #app {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
+
 section {
     display: flex;
     flex-direction: column;
     background: $bg;
-    max-width: 320px;
-    align-items: flex-start;
+    width: 320px;
+    align-items: center;
     padding: 50px;
     margin: 50px;
     border-radius: 10px;
@@ -76,15 +79,22 @@ section {
         color: #E06D10;
     }
 
-#results {
+#iconResult {
+    height: 50%;
+    width: min-content;
+}
+
+.tempBox {
     display: flex;
-    flex-direction: column;
-    background: $bg;
-    max-width: 320px;
-    align-items: flex-end;
-    padding: 50px;
-    margin: 50px;
-    border-radius: 10px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 50%;
+    width: 100%;
+    align-items: center;
+    color: #2D1832;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
 

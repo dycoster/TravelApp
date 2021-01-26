@@ -1,4 +1,5 @@
-// import { performAction } from './js/app'
+import { onload } from './js/app'
+import { handleSubmit } from './js/app'
 import './styles/body.scss'
 
 // add eventlistener with callback action

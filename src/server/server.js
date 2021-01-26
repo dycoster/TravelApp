@@ -44,18 +44,18 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
-app.post('/add', async (req, res)=> {
-    console.log(req.body.long, req.body.lat)
-    const response = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${req.body.lat}&lon=${req.body.long}&key=${wbk}`)
+// app.post('/add', async (req, res)=> {
+//     console.log(req.body.long, req.body.lat)
+//     const response = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${req.body.lat}&lon=${req.body.long}&key=${wbk}`)
 
-    try {
-        const apiData = await response.json()
-        console.log(apiData)
-        res.send(apiData);
-    } catch (error) {
-        console.log('error', error)
-    }
-})
+//     try {
+//         const apiData = await response.json()
+//         console.log(apiData)
+//         res.send(apiData);
+//     } catch (error) {
+//         console.log('error', error)
+//     }
+// })
 // Add a GET route that returns the projectData object
 // app.get('/all', function (req, res) {
 //     res.send(projectData);

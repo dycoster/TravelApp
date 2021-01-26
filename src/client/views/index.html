@@ -5,7 +5,9 @@
     <title>Destination App</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lobster&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -29,7 +31,7 @@
           </div>
           <div class="return">
             <label for="departure">Return Date:</label>
-            <input type="date" name="departure" id="uiDeparture" required>
+            <input type="date" name="return" id="uiReturn" required>
           </div>
           <div class="submit">
             <input type="submit" id="submit" name="" value="Let's Go" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
@@ -37,9 +39,11 @@
         </form>
       </section>
       <section id="results">
-        <div id="locationResult"></div>
-        <div id="iconResult"></div>
-        <div id="tempResult"></div>
+        <img id="iconResult">
+        <div class="tempBox">
+          <div id="locationResult"></div>
+          <div id="tempResult"></div>
+        </div>
     </section>
   </body>
 </html>

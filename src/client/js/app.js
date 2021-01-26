@@ -1,34 +1,49 @@
-// Insiration from https://www.youtube.com/watch?v=wPElVpR1rwA&t=1640s
-window.addEventListener("load", () => {
-    let long;
-    let lat;
+// // Insiration from https://www.youtube.com/watch?v=wPElVpR1rwA&t=1640s
+// window.addEventListener("load", performAction)
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-            long = position.coords.longitude;
-            lat = position.coords.latitude;
-            console.log(lat, long)
+//     function performAction(e) {
 
-            await fetch ('http://localhost:3030/add', {
-                method: 'POST',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({lat, long}),
-            })
-            .then (res => res.json())
-            // receive response from API to updateUI
-            .then(function(res) {
-                document.getElementById('iconResult').innerHTML = `${res.icon}`;
-                document.getElementById('tempResult').innerHTML = `${res.temp}`;
-            });
-        });
-    }
+//     let long;
+//     let lat;
 
-});
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(position => {
+//             long = position.coords.longitude;
+//             lat = position.coords.latitude;
+//             console.log(lat, long)
+
+//             const wbApi = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&key=5f6318133b1e4773bb68e669f73545bd`
+
+//             fetch(wbApi, {
+//                 headers: {
+//                   'Content-Type': 'application/json',
+//                   'Access-Control-Allow-Origin': '*'
+//                 }})
+//                 .then (res => res.json())
+//                 .then (data => {
+//                     console.log(data)
+//                     document.getElementById('locationResult').innerHTML = `${data.city_name}, ${data.country_code}`;
+//                     document.getElementById('iconResult').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`);
+//                     document.getElementById('tempResult').innerHTML = `${data.data[0].temp}°C`
+//                 })
+//         });
+//     }
+// };
+
+function handleSubmit(event) {
+    event.preventDefault()
+
+    // check what text was put into the form field
+    let userDestination = document.getElementById('uiLocation').value
+    console.log(userDestination)
+    let userDeparture = document.getElementById('uiDeparture').value
+    console.log(userDeparture)
+    let userReturn = document.getElementById('uiReturn').value
+    console.log(userReturn)
 
 
+
+}
 
 
 
@@ -115,8 +130,3 @@ window.addEventListener("load", () => {
 //         console.log("error", error);
 //     }
 // };
-
-
-
-
-
