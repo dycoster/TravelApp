@@ -1,6 +1,8 @@
-import { onload } from './js/app'
-import { handleSubmit } from './js/app'
+// import { performAction } from './js/app'
+import { handleSubmit } from './js/formHandler'
 import './styles/body.scss'
+
+console.log(handleSubmit)
 
 // add eventlistener with callback action
 // document.getElementById('generate').addEventListener('click', performAction);
@@ -16,6 +18,7 @@ import './styles/body.scss'
     //     });
     // }
 
-    // export {
-    //     performAction
-    // }
+    export {
+        // performAction,
+        handleSubmit
+    }

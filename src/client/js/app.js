@@ -1,7 +1,7 @@
 // // Insiration from https://www.youtube.com/watch?v=wPElVpR1rwA&t=1640s
 // window.addEventListener("load", performAction)
 
-//     function performAction(e) {
+//     function performAction() {
 
 //     let long;
 //     let lat;
@@ -30,22 +30,8 @@
 //     }
 // };
 
-function handleSubmit(event) {
-    event.preventDefault()
 
-    // check what text was put into the form field
-    let userDestination = document.getElementById('uiLocation').value
-    console.log(userDestination)
-    let userDeparture = document.getElementById('uiDeparture').value
-    console.log(userDeparture)
-    let userReturn = document.getElementById('uiReturn').value
-    console.log(userReturn)
-
-
-
-}
-
-
+// export { performAction }
 
 
 

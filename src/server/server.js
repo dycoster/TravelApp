@@ -1,10 +1,13 @@
 projectData = {};
 
-// API
+// API'S
 const dotenv = require('dotenv');
 dotenv.config();
+const wbUrl = 'https://api.weatherbit.io/v2.0/forecast/daily?lat='
 const wbk = process.env.weatherBitKey
 const geok = process.env.geoUsername
+
+const pbUrl = 'https://pixabay.com/api/?key='
 const pbk = process.env.pixabayKey
 
 // Require Express to run server and routes
@@ -44,6 +47,26 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
+// Add POST Route that adds incoming data to projectData
+app.post('/add', addData);
+
+function addData (req, res) {
+    projectData.location = req.body.location
+    projectData.departure = req.body.depart;
+    projectData.return = req.body.return;
+    res.send(projectData);
+    console.log(projectData);
+}
+
+app.get('/geonames', async(req,res) => {
+
+    let geoUrl = `$http://api.geonames.org/searchJSON?q=${projectData.location}&maxRows=1&username=${process.env.geoUsername}`;
+    fetch (geoUrl)
+    .then(res => res.json())
+    .then(data =>{
+        console.log(data)})
+})
+
 // app.post('/add', async (req, res)=> {
 //     console.log(req.body.long, req.body.lat)
 //     const response = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${req.body.lat}&lon=${req.body.long}&key=${wbk}`)
@@ -59,18 +82,4 @@ app.get('/', function (req, res) {
 // Add a GET route that returns the projectData object
 // app.get('/all', function (req, res) {
 //     res.send(projectData);
-//   })
-
-// // Add POST Route that adds incoming data to projectData
-// app.post('/add', addData);
-
-// function addData (req, res) {
-//     projectData.name = req.body.name
-//     projectData.temperature = req.body.temperature;
-//     projectData.date = req.body.date;
-//     projectData.user_response = req.body.user_response;
-//     projectData.icon = req.body.icon;
-//     res.send(projectData);
-//     console.log(projectData);
-// }
-
+//   }),
