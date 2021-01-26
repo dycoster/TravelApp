@@ -21,10 +21,12 @@ function handleSubmit(event) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({location: userDestination, depart: userDeparture, return: userReturn}),
+            body: JSON.stringify({
+                location: userDestination,
+                depart: userDeparture,
+                return: userReturn
+            }),
         })
-
-        .then (res => res.json())
 }
 
 export { handleSubmit }

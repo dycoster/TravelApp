@@ -59,7 +59,6 @@ function addData (req, res) {
 }
 
 app.get('/geonames', async(req,res) => {
-
     let geoUrl = `$http://api.geonames.org/searchJSON?q=${projectData.location}&maxRows=1&username=${process.env.geoUsername}`;
     fetch (geoUrl)
     .then(res => res.json())
@@ -67,8 +66,7 @@ app.get('/geonames', async(req,res) => {
         console.log(data)})
 })
 
-// app.post('/add', async (req, res)=> {
-//     console.log(req.body.long, req.body.lat)
+// app.get('/add', async (req, res)=> {
 //     const response = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${req.body.lat}&lon=${req.body.long}&key=${wbk}`)
 
 //     try {
