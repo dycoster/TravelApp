@@ -1,11 +1,10 @@
 // import { performAction } from './js/app'
-import { handleSubmit } from './js/formHandler'
+import { handleSubmit, getCoords, postCoords, postWeather  } from './js/formHandler'
 import './styles/body.scss'
 
-console.log(handleSubmit)
 
 // add eventlistener with callback action
-// document.getElementById('generate').addEventListener('click', performAction);
+document.getElementById('submit').addEventListener('click', handleSubmit);
 
 // moved to index.js as suggested in https://knowledge.udacity.com/questions/435694
 
@@ -20,5 +19,8 @@ console.log(handleSubmit)
 
     export {
         // performAction,
-        handleSubmit
+        handleSubmit,
+        getCoords,
+        postCoords,
+        postWeather
     }
