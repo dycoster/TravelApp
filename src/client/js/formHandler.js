@@ -48,6 +48,7 @@ async function getImage (userDestination) {
     try {
         const data = await response.json()
         console.log(data)
+        document.getElementById('photo').setAttribute('src', `${data.hits[3].userImageURL}`)
     } catch (error) {
         console.log('error', error)
     }
