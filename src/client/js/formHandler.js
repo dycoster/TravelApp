@@ -14,6 +14,9 @@ async function handleSubmit(event) {
 
     console.log("::: Form Submitted :::");
 
+    // PixaBay API request
+    getImage(userDestination)
+
     // GeoNames API request
     getCoords(userDestination)
 
@@ -26,27 +29,32 @@ async function handleSubmit(event) {
             country: data.geonames[0].countryName})
 
         .then(function(newData) {
-            postWeather('http://localhost:3030/weather', {
-                name: data.city_name,
-                country_code: data.country_code,
-                temp: data.data[0].temp,
-                description: data[0].weather.description,
-                icon: data[0].weather.icon })
+            console.log(newData)
+            getImage(newData)
+            updateUI()
         })
     })
-
-    // post weather API Data
-
-
-
-    // PixaBay API request
-
-
 };
 
 
+// PixaBay API Request
+async function getImage (userDestination) {
 
-// geoNames API call
+
+    let imageUrl = `https://pixabay.com/api/?key=20000501-dad6322171b2d4f4f813207da&q=${userDestination}&image_type=photo`
+
+    const response = await fetch(imageUrl)
+
+    try {
+        const data = await response.json()
+        console.log(data)
+    } catch (error) {
+        console.log('error', error)
+    }
+}
+
+
+// geoNames API Request
 async function getCoords(userDestination) {
 
     let geoUrl = `http://api.geonames.org/searchJSON?q=${userDestination}&maxRows=1&username=dycoster`;
@@ -83,39 +91,22 @@ const postCoords = async (url = '', data = {})=> {
     }
 }
 
-const postWeather = async (url = '', data = {})=> {
-    const response = await fetch (url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
 
-    try {
-        const weatherData = await response.json();
-        console.log(weatherData);
-        return weatherData;
-
-    }catch (error) {
+const updateUI = async () => {
+    const request = await fetch('http://localhost:3030/all');
+    try{
+        const allData = await request.json();
+        document.getElementById('locationResult').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
+        document.getElementById('iconResult').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.icon}.png`);
+        document.getElementById('tempResult').innerHTML = `<span>${allData.temp}</span> °C`
+    }
+    catch (error) {
         console.log("error", error);
     }
-}
-// const updateUI = async () => {
-//     const request = await fetch('http://localhost:3030/all');
-//     try{
-//         const allData = await request.json();
-//         console.log(allData)
-//     }
-//     catch (error) {
-//         console.log("error", error);
-//     }
-// };
+};
 
 export {
     handleSubmit,
     getCoords,
     postCoords,
-    postWeather
  }

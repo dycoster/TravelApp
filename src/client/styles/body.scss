@@ -51,6 +51,9 @@ section {
     }
 
     form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin-top: 1rem;
 
         div {
@@ -81,21 +84,28 @@ section {
 
 #iconResult {
     height: 50%;
-    width: min-content;
 }
 
 .tempBox {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 50%;
     width: 100%;
     align-items: center;
     color: #2D1832;
-    font-family: 'Amatic SC', cursive;
+    font-family: $title-font;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
+#locationResult span {
+    font-size: 2rem;
+}
+
+#tempResult span {
+    font-size: 2rem;
+    color: #E06D10;
+}
 
 

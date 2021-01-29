@@ -6,10 +6,9 @@ dotenv.config();
 const wbUrl = 'https://api.weatherbit.io/v2.0/forecast/daily?lat='
 const wbk = process.env.weatherBitKey
 
-const geok = process.env.geoUsername
-
-const pbUrl = 'https://pixabay.com/api/?key='
 const pbk = process.env.pixabayKey
+const pbUrl = `https://pixabay.com/api/?key=${pbk}`
+
 
 
 // Require Express to run server and routes
@@ -54,7 +53,7 @@ app.post('/add', getWeather);
 
 async function getWeather (req, res) {
 
-    console.log(req.body)
+    // console.log(req.body)
 
     let weatherUrl = `${wbUrl}${req.body.lat}&lon=${req.body.long}&key=${wbk}`
 
@@ -63,24 +62,17 @@ async function getWeather (req, res) {
     try {
         const data = await response.json()
         // console.log(data)
-        res.send(data);
+        projectData.placeName = data.city_name;
+        projectData.country = data.country_code;
+        projectData.temp = data.data[0].temp;
+        projectData.description = data.data[0].weather.description;
+        projectData.icon = data.data[0].weather.icon;
+        res.send(projectData);
+        console.log(projectData);
 
     } catch (error) {
         console.log('error', error)
     }
-}
-
-// Add POST Route that adds incoming data to projectData
-app.post('/weather', addData);
-
-function addData (req, res) {
-    projectData.placeName = req.body.name;
-    projectData.country = req.body.country_code;
-    projectData.temp = req.body.temp;
-    projectData.description = req.body.discription
-    projectData.icon = req.body.icon
-    res.send(projectData);
-    console.log(projectData);
 }
 
 // Add a GET route that returns the projectData object

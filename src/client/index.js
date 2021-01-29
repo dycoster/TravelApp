@@ -1,5 +1,5 @@
 // import { performAction } from './js/app'
-import { handleSubmit, getCoords, postCoords, postWeather  } from './js/formHandler'
+import { handleSubmit, getCoords, postCoords } from './js/formHandler'
 import './styles/body.scss'
 
 
@@ -22,5 +22,4 @@ document.getElementById('submit').addEventListener('click', handleSubmit);
         handleSubmit,
         getCoords,
         postCoords,
-        postWeather
     }
