@@ -29,7 +29,9 @@ header {
         align-self: center;
     }
 }
-
+#photo {
+    height: 100vh;
+}
 #app {
     display: flex;
     flex-direction: row;

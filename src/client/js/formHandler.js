@@ -30,7 +30,6 @@ async function handleSubmit(event) {
 
         .then(function(newData) {
             console.log(newData)
-            getImage(newData)
             updateUI()
         })
     })
@@ -48,7 +47,8 @@ async function getImage (userDestination) {
     try {
         const data = await response.json()
         console.log(data)
-        document.getElementById('photo').setAttribute('src', `${data.hits[3].userImageURL}`)
+        document.getElementById('photo').style.backgroundImage = `url(${data.hits[3].largeImageURL})`;
+
     } catch (error) {
         console.log('error', error)
     }
