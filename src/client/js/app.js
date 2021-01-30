@@ -1,37 +1,38 @@
 // // Insiration from https://www.youtube.com/watch?v=wPElVpR1rwA&t=1640s
-// window.addEventListener("load", performAction)
+window.addEventListener("load", performAction)
 
-//     function performAction() {
+    function performAction() {
 
-//     let long;
-//     let lat;
+    let long;
+    let lat;
 
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(position => {
-//             long = position.coords.longitude;
-//             lat = position.coords.latitude;
-//             console.log(lat, long)
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            long = position.coords.longitude;
+            lat = position.coords.latitude;
+            console.log(lat, long)
 
-//             const wbApi = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&key=5f6318133b1e4773bb68e669f73545bd`
+            const wbApi = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&key=5f6318133b1e4773bb68e669f73545bd`
 
-//             fetch(wbApi, {
-//                 headers: {
-//                   'Content-Type': 'application/json',
-//                   'Access-Control-Allow-Origin': '*'
-//                 }})
-//                 .then (res => res.json())
-//                 .then (data => {
-//                     console.log(data)
-//                     document.getElementById('locationResult').innerHTML = `${data.city_name}, ${data.country_code}`;
-//                     document.getElementById('iconResult').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`);
-//                     document.getElementById('tempResult').innerHTML = `${data.data[0].temp}°C`
-//                 })
-//         });
-//     }
-// };
+            fetch(wbApi, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Access-Control-Allow-Origin': '*'
+                }})
+                .then (res => res.json())
+                .then (data => {
+                    console.log(data)
+                    document.getElementById('locationResult').innerHTML = `<span>${data.city_name}</span>, ${data.country_code}`;
+                    document.getElementById('iconResult').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`);
+                    document.getElementById('tempResult').innerHTML = `<span>${data.data[0].temp}</span>°C`;
+                    document.getElementById('description').innerHTML = `<span>${data.data[0].weather.description}</span>`;
+                })
+        });
+    }
+};
 
 
-// export { performAction }
+export { performAction }
 
 
 

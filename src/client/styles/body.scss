@@ -5,63 +5,113 @@
 }
 $primary-font: 'Quicksand', sans-serif;
 $title-font: 'Lobster', cursive;
-$bg:rgba($color: #EBF4FA, $alpha: 0.3);
-$contrast: #F4A15D;
+$color: #2D1832;
+$bg:rgba($color: #EBF4FA, $alpha: 0.5);
+$contrast: #B6590D;
 
 body {
     font-family: $primary-font;
+    color: $color;
     font-size: 16px;
     background: url("https://cdn.pixabay.com/photo/2015/10/12/14/55/airplane-983991_960_720.jpg") fixed no-repeat;
     background-size: cover;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-auto-rows: minmax(20vh, auto);
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "header header"
+    "form blank"
+    "form column-right"
+    "form results"
+    "left results";
+    height:100vh;
 }
 
 header {
+    grid-area: header;
     font-family: $title-font;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 4rem;
-
-    h1 {
-        align-self: center;
-    }
+    text-shadow: 3px 3px 8px whitesmoke;
 }
+
+main {
+    grid-area: 2 / 1 / 6 / 3;
+}
+
+
 #photo {
     height: 100vh;
 }
+
 #app {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-section {
+.userInputSection {
+    grid-area: form;
     display: flex;
     flex-direction: column;
-    background: $bg;
-    width: 320px;
-    align-items: center;
-    padding: 50px;
-    margin: 50px;
-    border-radius: 10px;
 
-    h2{
-        font-family: $title-font;
-    }
 
     form {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 1rem;
+        background: $bg;
+        border-radius: 10px;
+        width: 320px;
+        padding: 50px;
+        margin: 0 50px;
+
+        h2{
+            font-family: $title-font;
+            text-shadow: 3px 3px 8px whitesmoke;
+        }
 
         div {
             padding: 1rem;
         }
     }
+}
+
+#results {
+    grid-area: results;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 50%;
+    margin-right: 50px;
+    background: rgba($color: #EBF4FA, $alpha: 0.2);
+    border-radius: 10px;
+    align-items: center;
+    font-family: $title-font;
+    color: whitesmoke;
+    text-shadow: 3px 3px 10px $color;
+    font-size: 1.25rem;
+    transition-timing-function: ease-in;
+    transition: 2s;
+}
+
+.resultContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+}
+
+#description {
+    padding-bottom: 30px;
+}
+
+#description span {
+    font-family:'Lobster Two', cursive;
+    font-size: 1rem;
 }
 .submit {
     display: flex;
@@ -70,7 +120,7 @@ section {
 }
 #submit {
     padding: 5px 20px;
-    color: white;
+    color: whitesmoke;
     background-color: $contrast;
     border-radius: 5px;
 }
@@ -80,26 +130,10 @@ section {
 }
 
 #submit:active {
-        background-color: white;
+        background-color: whitesmoke;
         color: #E06D10;
+        border: none;
     }
-
-#iconResult {
-    height: 50%;
-}
-
-.tempBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 50%;
-    width: 100%;
-    align-items: center;
-    color: #2D1832;
-    font-family: $title-font;
-    font-weight: bold;
-    font-size: 1.25rem;
-}
 
 #locationResult span {
     font-size: 2rem;
@@ -108,6 +142,10 @@ section {
 #tempResult span {
     font-size: 2rem;
     color: #E06D10;
+}
+
+#iconResult {
+    transform: scale(0.75) ;
 }
 
 

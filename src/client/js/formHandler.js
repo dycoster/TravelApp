@@ -99,7 +99,8 @@ const updateUI = async () => {
         const allData = await request.json();
         document.getElementById('locationResult').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
         document.getElementById('iconResult').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.icon}.png`);
-        document.getElementById('tempResult').innerHTML = `<span>${allData.temp}</span> °C`
+        document.getElementById('tempResult').innerHTML = `<span>${allData.temp}</span> °C`;
+        document.getElementById('description').innerHTML = `<span>${allData.description}</span>`;
     }
     catch (error) {
         console.log("error", error);
@@ -108,6 +109,8 @@ const updateUI = async () => {
 
 export {
     handleSubmit,
+    getImage,
     getCoords,
     postCoords,
+    updateUI
  }

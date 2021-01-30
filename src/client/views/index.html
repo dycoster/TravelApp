@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lobster&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two:ital@1&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body id="photo">
@@ -17,11 +18,11 @@
     <main>
       <div id = "app">
         <section class="userInputSection">
-          <div>
-            <h2>Let's find out about your trip</h2>
-          </div>
           <!-- From Lesson 4 -->
           <form class="uiForm">
+            <div>
+              <h2>Let's find out about your trip</h2>
+            </div>
             <div class="destination">
               <label for="location">Where are you going?</label>
               <input type="text" name="location" id="uiLocation" placeholder="e.g. Tokyo" required>
@@ -38,11 +39,12 @@
           </form>
         </section>
         <section id="results">
-          <img id="iconResult">
-          <div class="tempBox">
-            <div id="locationResult"></div>
-            <div id="tempResult"></div>
-          </div>
+            <div class="resultContainer">
+              <div id="locationResult"></div>
+              <div id="tempResult"></div>
+              <img id="iconResult">
+            </div>
+            <div id="description"></div>
         </section>
       </div>
     </main>

@@ -1,5 +1,5 @@
-// import { performAction } from './js/app'
-import { handleSubmit, getCoords, postCoords } from './js/formHandler'
+import { performAction } from './js/app'
+import { handleSubmit, getImage, getCoords, postCoords, updateUI } from './js/formHandler'
 import './styles/body.scss'
 
 
@@ -18,8 +18,10 @@ document.getElementById('submit').addEventListener('click', handleSubmit);
     // }
 
     export {
-        // performAction,
+        performAction,
         handleSubmit,
+        getImage,
         getCoords,
         postCoords,
+        updateUI
     }
