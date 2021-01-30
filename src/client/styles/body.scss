@@ -7,7 +7,7 @@ $primary-font: 'Quicksand', sans-serif;
 $title-font: 'Lobster', cursive;
 $color: #2D1832;
 $bg:rgba($color: #EBF4FA, $alpha: 0.5);
-$contrast: #B6590D;
+$contrast: #e26803;
 
 body {
     font-family: $primary-font;
@@ -126,7 +126,7 @@ main {
 }
 
 #submit:hover {
-        background-color: #E06D10;
+        background-color: #e2761d;
 }
 
 #submit:active {
@@ -141,7 +141,7 @@ main {
 
 #tempResult span {
     font-size: 2rem;
-    color: #E06D10;
+    color: #e2761d;
 }
 
 #iconResult {
