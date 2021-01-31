@@ -22,13 +22,16 @@ window.addEventListener("load", performAction)
                 .then (res => res.json())
                 .then (data => {
                     console.log(data)
-                    document.getElementById('locationResult').innerHTML = `<span>${data.city_name}</span>, ${data.country_code}`;
-                    document.getElementById('iconResult').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`);
-                    document.getElementById('tempResult').innerHTML = `<span>${data.data[0].temp}</span>°C`;
-                    document.getElementById('description').innerHTML = `<span>${data.data[0].weather.description}</span>`;
+                    document.getElementById('locationResultCurrent').innerHTML = `<span>${data.city_name}</span>, ${data.country_code}`;
+                    document.getElementById('iconResultCurrent').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`);
+                    document.getElementById('tempResultCurrent').innerHTML = `<span>${data.data[0].temp}</span>°C`;
+                    document.getElementById('descriptionCurrent').innerHTML = `<span>${data.data[0].weather.description}</span>`;
                 })
         });
-    }
+    } else {
+        let currentDiv = document.getElementById('current')
+        currentDiv.style.display = "none";
+                }
 };
 
 

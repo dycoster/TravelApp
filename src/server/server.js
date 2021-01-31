@@ -61,12 +61,27 @@ async function getWeather (req, res) {
 
     try {
         const data = await response.json()
-        // console.log(data)
+
+        let days = req.body.daysTillDep
+
+        forecast(days)
+
+        function forecast(days) {
+        if (days >= 16) {
+            return 16
+        } else return days
+        };
+        let fore = data.data[days]
+        let current = data.data[0]
+
         projectData.placeName = data.city_name;
         projectData.country = data.country_code;
-        projectData.temp = data.data[0].temp;
-        projectData.description = data.data[0].weather.description;
-        projectData.icon = data.data[0].weather.icon;
+        projectData.temp = fore.temp;
+        projectData.description = fore.weather.description;
+        projectData.icon = fore.weather.icon;
+        projectData.currentTemp = current.temp;
+        projectData.currentDescription = current.weather.description;
+        projectData.currentIcon = current.weather.icon;
         res.send(projectData);
         console.log(projectData);
 

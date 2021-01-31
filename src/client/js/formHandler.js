@@ -9,6 +9,22 @@ async function handleSubmit(event) {
     console.log(`user entered: ${userDeparture}`)
     let userReturn = document.getElementById('uiReturn').value
     console.log(`user entered: ${userReturn}`)
+    let forecastDiv = document.getElementById('forecast')
+    forecastDiv.style.display = "flex";
+
+    // Inspiration from https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
+
+    // Countdown
+    const today = new Date()
+    const date1 = new Date(userDeparture);
+    const date2 = new Date(userReturn);
+    const timeTillDep = Math.abs(date1 - today);
+    const daysTillDep = Math.ceil(timeTillDep / (1000 * 60 * 60 * 24));
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    console.log(daysTillDep + " days");
+    console.log(diffDays + " days");
 
     // From Project 4
 
@@ -26,15 +42,15 @@ async function handleSubmit(event) {
             placeName: data.geonames[0].name,
             lat: data.geonames[0].lat,
             long: data.geonames[0].lng,
-            country: data.geonames[0].countryName})
+            country: data.geonames[0].countryName,
+            daysTillDep: daysTillDep,
+            duration: diffDays})
 
         .then(function(newData) {
-            console.log(newData)
             updateUI()
         })
     })
 };
-
 
 // PixaBay API Request
 async function getImage (userDestination) {
@@ -47,7 +63,7 @@ async function getImage (userDestination) {
     try {
         const data = await response.json()
         console.log(data)
-        document.getElementById('photo').style.backgroundImage = `url(${data.hits[3].largeImageURL})`;
+        document.getElementById('photo').style.backgroundImage = `url(${data.hits[4].largeImageURL})`;
 
     } catch (error) {
         console.log('error', error)
@@ -97,10 +113,16 @@ const updateUI = async () => {
     const request = await fetch('http://localhost:3030/all');
     try{
         const allData = await request.json();
-        document.getElementById('locationResult').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
-        document.getElementById('iconResult').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.icon}.png`);
-        document.getElementById('tempResult').innerHTML = `<span>${allData.temp}</span> °C`;
-        document.getElementById('description').innerHTML = `<span>${allData.description}</span>`;
+        console.log(allData)
+        document.getElementById('locationResultCurrent').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
+        document.getElementById('iconResultCurrent').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.currentIcon}.png`);
+        document.getElementById('tempResultCurrent').innerHTML = `<span>${allData.currentTemp}</span> °C`;
+        document.getElementById('descriptionCurrent').innerHTML = `<span>${allData.currentDescription}</span>`;
+
+        document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
+        document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.icon}.png`);
+        document.getElementById('tempResultForecast').innerHTML = `<span>${allData.temp}</span> °C`;
+        document.getElementById('descriptionForecast').innerHTML = `<span>${allData.description}</span>`;
     }
     catch (error) {
         console.log("error", error);
