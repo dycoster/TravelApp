@@ -114,15 +114,31 @@ const updateUI = async () => {
     try{
         const allData = await request.json();
         console.log(allData)
+// today's weather
         document.getElementById('locationResultCurrent').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
         document.getElementById('iconResultCurrent').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.currentIcon}.png`);
         document.getElementById('tempResultCurrent').innerHTML = `<span>${allData.currentTemp}</span> °C`;
         document.getElementById('descriptionCurrent').innerHTML = `<span>${allData.currentDescription}</span>`;
+        document.getElementById('highTempCurrent').innerHTML = `max: <span>${allData.currentHighTemp}</span> °C`;
+        document.getElementById('lowTempCurrent').innerHTML = `min: <span>${allData.currentLowTemp}</span> °C`;
 
+// tomorrow's weather
+        document.getElementById('iconResultTomorrow').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.tomorrowIcon}.png`);
+        document.getElementById('tempResultTomorrow').innerHTML = `<span>${allData.tomorrowTemp}</span> °C`;
+        document.getElementById('descriptionTomorrow').innerHTML = `<span>${allData.tomorrowDescription}</span>`;
+        document.getElementById('highTempTomorrow').innerHTML = `max: <span>${allData.tomorrowHighTemp}</span> °C`;
+        document.getElementById('lowTempTomorrow').innerHTML = `min: <span>${allData.tomorrowLowTemp}</span> °C`;
+
+// Weather on day of arrival
         document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
         document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.icon}.png`);
-        document.getElementById('tempResultForecast').innerHTML = `<span>${allData.temp}</span> °C`;
+        document.getElementById('tempResultForecast').innerHTML = `<span>${allData.temp}</span>  °C`;
         document.getElementById('descriptionForecast').innerHTML = `<span>${allData.description}</span>`;
+        document.getElementById('highTempForecast').innerHTML = `max: <span>${allData.highTemp}</span> °C`;
+        document.getElementById('lowTempForecast').innerHTML = `min: <span>${allData.lowTemp}</span> °C`;
+
+// Day After
+        
     }
     catch (error) {
         console.log("error", error);

@@ -63,6 +63,8 @@ async function getWeather (req, res) {
         const data = await response.json()
 
         let days = req.body.daysTillDep
+        let day01 = (days + 1)
+        let returnDay = (days + req.body.duration)
 
         forecast(days)
 
@@ -72,16 +74,41 @@ async function getWeather (req, res) {
         } else return days
         };
         let fore = data.data[days]
-        let current = data.data[0]
+        let day1 = data.data[day01]
+        let travel = data.data[returnDay]
 
+        let current = data.data[0]
+        let tomorrow = data.data[1]
+
+// location
         projectData.placeName = data.city_name;
         projectData.country = data.country_code;
-        projectData.temp = fore.temp;
-        projectData.description = fore.weather.description;
-        projectData.icon = fore.weather.icon;
+// today
         projectData.currentTemp = current.temp;
+        projectData.currentLowTemp = current.low_temp;
+        projectData.currentHighTemp = current.high_temp;
         projectData.currentDescription = current.weather.description;
         projectData.currentIcon = current.weather.icon;
+// tomorrow
+        projectData.tomorrowTemp = tomorrow.temp;
+        projectData.tomorrowLowTemp = tomorrow.low_temp;
+        projectData.tomorrowHighTemp = tomorrow.high_temp;
+        projectData.tomorrowDescription = tomorrow.weather.description;
+        projectData.tomorrowIcon = tomorrow.weather.icon;
+// day of arrival
+        projectData.temp = fore.temp;
+        projectData.lowTemp = fore.low_temp;
+        projectData.highTemp = fore.high_temp;
+        projectData.description = fore.weather.description;
+        projectData.icon = fore.weather.icon;
+// first day of trip
+        projectData.firsttemp = day1.temp;
+        projectData.firstlowTemp = day1.low_temp;
+        projectData.firsthighTemp = day1.high_temp;
+        projectData.firstdescription = day1.weather.description;
+        projectData.firsticon = day1.weather.icon;
+// Departure
+
         res.send(projectData);
         console.log(projectData);
 
