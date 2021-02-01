@@ -131,8 +131,8 @@ main {
         padding-top: 4vh;
         border-radius: 10px;
         background: $bgresult;
+        transition: 1s;
         transition-timing-function: ease-in;
-        transition: 2s;
 
         h2 {
             font-family: $title-font;

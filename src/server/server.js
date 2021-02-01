@@ -62,9 +62,9 @@ async function getWeather (req, res) {
     try {
         const data = await response.json()
 
-        let days = req.body.daysTillDep
-        let day01 = (days + 1)
-        let returnDay = (days + req.body.duration)
+        let days = req.body.daysTillDep;
+        let day01 = Math.abs(days + 1);
+        let returnDay = Math.abs(days + req.body.duration);
 
         forecast(days)
 

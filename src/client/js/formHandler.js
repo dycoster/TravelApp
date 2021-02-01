@@ -9,6 +9,8 @@ async function handleSubmit(event) {
     console.log(`user entered: ${userDeparture}`)
     let userReturn = document.getElementById('uiReturn').value
     console.log(`user entered: ${userReturn}`)
+    let currentDiv = document.getElementById('current')
+    currentDiv.style.display = "none"
     let forecastDiv = document.getElementById('forecast')
     forecastDiv.style.display = "flex";
 
@@ -138,7 +140,11 @@ const updateUI = async () => {
         document.getElementById('lowTempForecast').innerHTML = `min: <span>${allData.lowTemp}</span> °C`;
 
 // Day After
-        
+        document.getElementById('iconResultForecast1').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.firsticon}.png`);
+        document.getElementById('tempResultForecast1').innerHTML = `<span>${allData.firsttemp}</span>  °C`;
+        document.getElementById('descriptionForecast1').innerHTML = `<span>${allData.firstdescription}</span>`;
+        document.getElementById('highTempForecast1').innerHTML = `max: <span>${allData.firsthighTemp}</span> °C`;
+        document.getElementById('lowTempForecast1').innerHTML = `min: <span>${allData.firstlowTemp}</span> °C`;
     }
     catch (error) {
         console.log("error", error);
