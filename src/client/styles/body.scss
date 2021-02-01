@@ -100,13 +100,14 @@ main {
 }
 
 #submit:hover {
-        background-color: #e2761d;
+    color: $contrast;
+    background-color: whitesmoke;
+    border: 1px solid $contrast;
 }
 
 #submit:active {
-        background-color: whitesmoke;
-        color: #E06D10;
-        border-style: none;
+        color: #c4600f;
+        background-color: rgb(226, 224, 224);
     }
 
     // RESULT STYLING
