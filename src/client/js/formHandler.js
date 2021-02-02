@@ -10,9 +10,9 @@ async function handleSubmit(event) {
     let userReturn = document.getElementById('uiReturn').value
     console.log(`user entered: ${userReturn}`)
     let currentDiv = document.getElementById('current')
-    currentDiv.style.display = "none"
+    // currentDiv.style.display = "none"
     let forecastDiv = document.getElementById('forecast')
-    forecastDiv.style.display = "flex";
+    // forecastDiv.style.display = "flex";
 
     // Inspiration from https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
 
@@ -29,6 +29,9 @@ async function handleSubmit(event) {
 
     console.log(daysTillDep + " days");
     console.log(diffDays + " days");
+
+    // Set display
+    toggleDisplay(daysTillDep,currentDiv,forecastDiv)
 
     // From Project 4
 
@@ -55,6 +58,16 @@ async function handleSubmit(event) {
             updateUI()
         })
     })
+};
+
+function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
+    if (daysTillDep >= 6) {
+        currentDiv.style.display = "flex";
+        forecastDiv.style.display = "none";
+    } else {
+        currentDiv.style.display = "none";
+        forecastDiv.style.display = "flex";
+    }
 };
 
 // PixaBay API Request

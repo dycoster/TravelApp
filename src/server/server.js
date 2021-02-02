@@ -98,7 +98,7 @@ async function getWeather (req, res) {
 
         let foreData = data.data[myArray[i]];
         console.log(foreData.temp)
-        console.log(typeof foreData)
+        console.log(foreData)
         }
         }
     }
