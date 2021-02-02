@@ -73,7 +73,7 @@ async function getWeather (req, res) {
         forecast(returnDay, data)
 
         function forecast(returnDay, data) {
-        if (returnDay >= 6) {
+        if (returnDay >= 13) {
 
             function currentWeather(data) {
                 // today
@@ -92,7 +92,7 @@ async function getWeather (req, res) {
             return currentWeather(data)
 
         } else {
-            let myArray = ['0','1','2','3','4','5','6',];
+            let myArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];
         for (var i = 0; i < returnDay; i++) {
             console.log(myArray[i])
 
