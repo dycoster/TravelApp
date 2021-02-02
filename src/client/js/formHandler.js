@@ -22,6 +22,8 @@ async function handleSubmit(event) {
     const date2 = new Date(userReturn);
     const timeTillDep = Math.abs(date1 - today);
     const daysTillDep = Math.ceil(timeTillDep / (1000 * 60 * 60 * 24));
+    const timeTillRet = Math.abs(date2 - today);
+    const daysTillRet = Math.ceil(timeTillRet / (1000 * 60 * 60 * 24));
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
@@ -46,6 +48,7 @@ async function handleSubmit(event) {
             long: data.geonames[0].lng,
             country: data.geonames[0].countryName,
             daysTillDep: daysTillDep,
+            daysTillRet: daysTillRet,
             duration: diffDays})
 
         .then(function(newData) {
@@ -65,7 +68,11 @@ async function getImage (userDestination) {
     try {
         const data = await response.json()
         console.log(data)
-        document.getElementById('photo').style.backgroundImage = `url(${data.hits[4].largeImageURL})`;
+        // from https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
+        let randomNumber = Math.floor(Math.random() * 20) + 1;
+        let dataSelector = data.hits[randomNumber];
+
+        document.getElementById('photo').style.backgroundImage = `url(${dataSelector.largeImageURL})`;
 
     } catch (error) {
         console.log('error', error)
@@ -132,19 +139,19 @@ const updateUI = async () => {
         document.getElementById('lowTempTomorrow').innerHTML = `min: <span>${allData.tomorrowLowTemp}</span> °C`;
 
 // Weather on day of arrival
-        document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
-        document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.icon}.png`);
-        document.getElementById('tempResultForecast').innerHTML = `<span>${allData.temp}</span>  °C`;
-        document.getElementById('descriptionForecast').innerHTML = `<span>${allData.description}</span>`;
-        document.getElementById('highTempForecast').innerHTML = `max: <span>${allData.highTemp}</span> °C`;
-        document.getElementById('lowTempForecast').innerHTML = `min: <span>${allData.lowTemp}</span> °C`;
+//         document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
+//         document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.icon}.png`);
+//         document.getElementById('tempResultForecast').innerHTML = `<span>${allData.temp}</span>  °C`;
+//         document.getElementById('descriptionForecast').innerHTML = `<span>${allData.description}</span>`;
+//         document.getElementById('highTempForecast').innerHTML = `max: <span>${allData.highTemp}</span> °C`;
+//         document.getElementById('lowTempForecast').innerHTML = `min: <span>${allData.lowTemp}</span> °C`;
 
-// Day After
-        document.getElementById('iconResultForecast1').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.firsticon}.png`);
-        document.getElementById('tempResultForecast1').innerHTML = `<span>${allData.firsttemp}</span>  °C`;
-        document.getElementById('descriptionForecast1').innerHTML = `<span>${allData.firstdescription}</span>`;
-        document.getElementById('highTempForecast1').innerHTML = `max: <span>${allData.firsthighTemp}</span> °C`;
-        document.getElementById('lowTempForecast1').innerHTML = `min: <span>${allData.firstlowTemp}</span> °C`;
+// // Day After
+//         document.getElementById('iconResultForecast1').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.firsticon}.png`);
+//         document.getElementById('tempResultForecast1').innerHTML = `<span>${allData.firsttemp}</span>  °C`;
+//         document.getElementById('descriptionForecast1').innerHTML = `<span>${allData.firstdescription}</span>`;
+//         document.getElementById('highTempForecast1').innerHTML = `max: <span>${allData.firsthighTemp}</span> °C`;
+//         document.getElementById('lowTempForecast1').innerHTML = `min: <span>${allData.firstlowTemp}</span> °C`;
     }
     catch (error) {
         console.log("error", error);
