@@ -62,18 +62,24 @@ async function getWeather (req, res) {
     try {
         const data = await response.json()
 
+
+// location
+
+        projectData.placeName = data.city_name;
+        projectData.country = data.country_code;
+
+// forecast data points
         let current = data.data[0]
         let tomorrow = data.data[1]
-        let arrivalDayIndex = Math.abs(req.body.daysTillDep - 1);
-        let returnDay = Math.abs(req.body.daysTillRet);
-        console.log(arrivalDayIndex, returnDay);
+        let arrivalDayIndex = req.body.daysTillDep;
+        let returnDay = req.body.daysTillRet;
 
-        // from https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
+// from https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
 
         forecast(returnDay, data)
 
         function forecast(returnDay, data) {
-        if (returnDay >= 6) {
+        if (returnDay >= 7) {
 
             function currentWeather(data) {
                 // today
@@ -92,69 +98,61 @@ async function getWeather (req, res) {
             return currentWeather(data)
 
         } else {
-            let myArray = [0,1,2,3,4,5,6];
-        for (var i = arrivalDayIndex; i < returnDay; i++) {
-            console.log(myArray[i])
 
-        let foreData = data.data[myArray[i]];
-        console.log(foreData.temp)
-        console.log(foreData)
-        }
-        }
+            projectData.arrival_0_temp = data.data[arrivalDayIndex].temp;
+            projectData.arrival_0_lowTemp = data.data[arrivalDayIndex].low_temp;
+            projectData.arrival_0_highTemp = data.data[arrivalDayIndex].high_temp;
+            projectData.arrival_0_description = data.data[arrivalDayIndex].weather.description;
+            projectData.arrival_0_icon = data.data[arrivalDayIndex].weather.icon;
+
+                async function weatherTrip(arrivalDayIndex, returnDay) {
+                    let arrival0 = data.data[arrivalDayIndex]
+                    let arrival1 = Math.abs(arrivalDayIndex + 1);
+                    let arrival2 = Math.abs(arrivalDayIndex + 2);
+                    let arrival3 = Math.abs(arrivalDayIndex + 3);
+                    let arrival4 = Math.abs(arrivalDayIndex + 4);
+                    let arrival5 = Math.abs(arrivalDayIndex + 5);
+                    let arrival6 = Math.abs(arrivalDayIndex + 6);
+
+                    let day1 = (arrival1, returnDay) => {
+                        if (arrival1 <= returnDay){
+
+                        return projectData.arrival_1_temp = data.data[arrival1].temp,
+                        projectData.arrival_1_lowTemp = data.data[arrival1].low_temp,
+                        projectData.arrival_1_highTemp = data.data[arrival1].high_temp,
+                        projectData.arrival_1_description = data.data[arrival1].weather.description,
+                        projectData.arrival_1_icon = data.data[arrival1].weather.icon;
+                        }
+                    };
+                    day1(arrival1,returnDay)
+
+                    let day2 = (arrival2, returnDay) => {
+                        if (arrival2 <= returnDay) {
+
+                        return projectData.arrival_2_temp = data.data[arrival2].temp,
+                        projectData.arrival_2_lowTemp = data.data[arrival2].low_temp,
+                        projectData.arrival_2_highTemp = data.data[arrival2].high_temp,
+                        projectData.arrival_2_description = data.data[arrival2].weather.description,
+                        projectData.arrival_2_icon = data.data[arrival2].weather.icon;
+                        }
+                    };
+                    day2(arrival2,returnDay)
+
+                    let day3 = (arrival3, returnDay) => {
+                    if (arrival3 <= returnDay) {
+
+                        return projectData.arrival_3_temp = data.data[arrival3].temp,
+                        projectData.arrival_3_lowTemp = data.data[arrival3].low_temp,
+                        projectData.arrival_3_highTemp = data.data[arrival3].high_temp,
+                        projectData.arrival_3_description = data.data[arrival3].weather.description,
+                        projectData.arrival_3_icon = data.data[arrival3].weather.icon;
+                        }
+                    };
+                    day3(arrival3,returnDay)
+                }
+    weatherTrip(arrivalDayIndex, returnDay)
     }
-
-
-
-
-// location
-
-        projectData.placeName = data.city_name;
-        projectData.country = data.country_code;
-
-// today
-//         projectData.currentTemp = current.temp;
-//         projectData.currentLowTemp = current.low_temp;
-//         projectData.currentHighTemp = current.high_temp;
-//         projectData.currentDescription = current.weather.description;
-//         projectData.currentIcon = current.weather.icon;
-// // tomorrow
-//         projectData.tomorrowTemp = tomorrow.temp;
-//         projectData.tomorrowLowTemp = tomorrow.low_temp;
-//         projectData.tomorrowHighTemp = tomorrow.high_temp;
-//         projectData.tomorrowDescription = tomorrow.weather.description;
-//         projectData.tomorrowIcon = tomorrow.weather.icon;
-
-// forecast duration trip
-        
-// today
-        // projectData.forecast = foreData.temp
-//         projectData.lowTemp0 = forecast[0].low_temp;
-//         projectData.highTemp0 = forecast[0].high_temp;
-//         projectData.description0 = forecast[0].weather.description;
-//         projectData.icon0 = forecast[0].weather.icon;
-// // tomorrow
-//         projectData.temp1 = forecast[1].temp
-//         projectData.lowTemp1 = forecast[1].low_temp;
-//         projectData.highTemp1 = forecast[1].high_temp;
-//         projectData.description1 = forecast[1].weather.description;
-//         projectData.icon1 = forecast[1].weather.icon;
-// // day 3
-//         projectData.temp2 = forecast[2].temp
-//         projectData.lowTemp2 = forecast[2].low_temp;
-//         projectData.highTemp2 = forecast[2].high_temp;
-//         projectData.description2 = forecast[2].weather.description;
-//         projectData.icon2 = forecast[2].weather.icon;
-
-        
-
-
-// first day of trip
-        // projectData.firsttemp = day1.temp;
-        // projectData.firstlowTemp = day1.low_temp;
-        // projectData.firsthighTemp = day1.high_temp;
-        // projectData.firstdescription = day1.weather.description;
-        // projectData.firsticon = day1.weather.icon;
-// Departure
+}
 
         res.send(projectData);
         console.log(projectData);

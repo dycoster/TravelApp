@@ -41,7 +41,7 @@ async function handleSubmit(event) {
     getImage(userDestination)
 
     // GeoNames API request
-    getCoords(userDestination)
+    await getCoords(userDestination)
 
     // post userInput to serverside, inspiration from project3
     .then (function(data) {
@@ -152,19 +152,33 @@ const updateUI = async () => {
         document.getElementById('lowTempTomorrow').innerHTML = `min: <span>${allData.tomorrowLowTemp}</span> °C`;
 
 // Weather on day of arrival
-//         document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
-//         document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.icon}.png`);
-//         document.getElementById('tempResultForecast').innerHTML = `<span>${allData.temp}</span>  °C`;
-//         document.getElementById('descriptionForecast').innerHTML = `<span>${allData.description}</span>`;
-//         document.getElementById('highTempForecast').innerHTML = `max: <span>${allData.highTemp}</span> °C`;
-//         document.getElementById('lowTempForecast').innerHTML = `min: <span>${allData.lowTemp}</span> °C`;
+        document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
+        document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_0_icon}.png`);
+        document.getElementById('tempResultForecast').innerHTML = `<span>${allData.arrival_0_temp}</span>  °C`;
+        document.getElementById('descriptionForecast').innerHTML = `<span>${allData.arrival_0_description}</span>`;
+        document.getElementById('highTempForecast').innerHTML = `max: <span>${allData.arrival_0_highTemp}</span> °C`;
+        document.getElementById('lowTempForecast').innerHTML = `min: <span>${allData.arrival_0_lowTemp}</span> °C`;
 
-// // Day After
-//         document.getElementById('iconResultForecast1').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.firsticon}.png`);
-//         document.getElementById('tempResultForecast1').innerHTML = `<span>${allData.firsttemp}</span>  °C`;
-//         document.getElementById('descriptionForecast1').innerHTML = `<span>${allData.firstdescription}</span>`;
-//         document.getElementById('highTempForecast1').innerHTML = `max: <span>${allData.firsthighTemp}</span> °C`;
-//         document.getElementById('lowTempForecast1').innerHTML = `min: <span>${allData.firstlowTemp}</span> °C`;
+// Day 1
+        document.getElementById('iconResultForecast1').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_1_icon}.png`);
+        document.getElementById('tempResultForecast1').innerHTML = `<span>${allData.arrival_1_temp}</span>  °C`;
+        document.getElementById('descriptionForecast1').innerHTML = `<span>${allData.arrival_1_description}</span>`;
+        document.getElementById('highTempForecast1').innerHTML = `max: <span>${allData.arrival_1_highTemp}</span> °C`;
+        document.getElementById('lowTempForecast1').innerHTML = `min: <span>${allData.arrival_1_lowTemp}</span> °C`;
+
+ // Day 2
+ document.getElementById('iconResultForecast2').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_2_icon}.png`);
+ document.getElementById('tempResultForecast2').innerHTML = `<span>${allData.arrival_2_temp}</span>  °C`;
+ document.getElementById('descriptionForecast2').innerHTML = `<span>${allData.arrival_2_description}</span>`;
+ document.getElementById('highTempForecast2').innerHTML = `max: <span>${allData.arrival_2_highTemp}</span> °C`;
+ document.getElementById('lowTempForecast2').innerHTML = `min: <span>${allData.arrival_2_lowTemp}</span> °C`;
+
+ // Day 3
+ document.getElementById('iconResultForecast3').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_3_icon}.png`);
+ document.getElementById('tempResultForecast3').innerHTML = `<span>${allData.arrival_3_temp}</span>  °C`;
+ document.getElementById('descriptionForecast3').innerHTML = `<span>${allData.arrival_3_description}</span>`;
+ document.getElementById('highTempForecast3').innerHTML = `max: <span>${allData.arrival_3_highTemp}</span> °C`;
+ document.getElementById('lowTempForecast3').innerHTML = `min: <span>${allData.arrival_3_lowTemp}</span> °C`;
     }
     catch (error) {
         console.log("error", error);
