@@ -53,8 +53,6 @@ app.post('/add', getWeather);
 
 async function getWeather (req, res) {
 
-    // console.log(req.body)
-
     let weatherUrl = `${wbUrl}${req.body.lat}&lon=${req.body.long}&key=${wbk}`
 
     const response = await fetch(weatherUrl)
@@ -71,8 +69,9 @@ async function getWeather (req, res) {
 // forecast data points
         let current = data.data[0]
         let tomorrow = data.data[1]
-        let arrivalDayIndex = req.body.daysTillDep;
+        let arrivalDayIndex = Math.abs(req.body.daysTillDep - 1);
         let returnDay = req.body.daysTillRet;
+        console.log(returnDay)
 
 // from https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
 
@@ -113,7 +112,8 @@ async function getWeather (req, res) {
                     let arrival4 = Math.abs(arrivalDayIndex + 4);
                     let arrival5 = Math.abs(arrivalDayIndex + 5);
                     let arrival6 = Math.abs(arrivalDayIndex + 6);
-
+                    console.log(arrivalDayIndex)
+                    console.log(arrival6)
                     let day1 = (arrival1, returnDay) => {
                         if (arrival1 <= returnDay){
 
@@ -124,7 +124,7 @@ async function getWeather (req, res) {
                         projectData.arrival_1_icon = data.data[arrival1].weather.icon;
                         }
                     };
-                    day1(arrival1,returnDay)
+                        day1(arrival1,returnDay)
 
                     let day2 = (arrival2, returnDay) => {
                         if (arrival2 <= returnDay) {
@@ -136,7 +136,7 @@ async function getWeather (req, res) {
                         projectData.arrival_2_icon = data.data[arrival2].weather.icon;
                         }
                     };
-                    day2(arrival2,returnDay)
+                        day2(arrival2,returnDay)
 
                     let day3 = (arrival3, returnDay) => {
                     if (arrival3 <= returnDay) {
@@ -148,11 +148,47 @@ async function getWeather (req, res) {
                         projectData.arrival_3_icon = data.data[arrival3].weather.icon;
                         }
                     };
-                    day3(arrival3,returnDay)
+                        day3(arrival3,returnDay)
+
+                    let day4 = (arrival4, returnDay) => {
+                        if (arrival4 <= returnDay) {
+
+                            return projectData.arrival_4_temp = data.data[arrival4].temp,
+                            projectData.arrival_4_lowTemp = data.data[arrival4].low_temp,
+                            projectData.arrival_4_highTemp = data.data[arrival4].high_temp,
+                            projectData.arrival_4_description = data.data[arrival4].weather.description,
+                            projectData.arrival_4_icon = data.data[arrival4].weather.icon;
+                            }
+                        };
+                        day4(arrival4,returnDay)
+
+                    let day5 = (arrival5, returnDay) => {
+                        if (arrival5 <= returnDay) {
+
+                            return projectData.arrival_5_temp = data.data[arrival5].temp,
+                            projectData.arrival_5_lowTemp = data.data[arrival5].low_temp,
+                            projectData.arrival_5_highTemp = data.data[arrival5].high_temp,
+                            projectData.arrival_5_description = data.data[arrival5].weather.description,
+                            projectData.arrival_5_icon = data.data[arrival5].weather.icon;
+                            }
+                        };
+                        day5(arrival5,returnDay)
+
+                    let day6 = (arrival6, returnDay) => {
+                    if (arrival6 <= returnDay) {
+
+                            return projectData.arrival_6_temp = data.data[arrival6].temp,
+                            projectData.arrival_6_lowTemp = data.data[arrival6].low_temp,
+                            projectData.arrival_6_highTemp = data.data[arrival6].high_temp,
+                            projectData.arrival_6_description = data.data[arrival6].weather.description,
+                            projectData.arrival_6_icon = data.data[arrival6].weather.icon;
+                            }
+                        };
+                        day6(arrival6,returnDay)
                 }
     weatherTrip(arrivalDayIndex, returnDay)
-    }
-}
+            }
+        }
 
         res.send(projectData);
         console.log(projectData);
