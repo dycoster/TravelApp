@@ -1,5 +1,4 @@
 // // Insiration from https://www.youtube.com/watch?v=wPElVpR1rwA&t=1640s
-window.addEventListener("load", performAction)
 
     function performAction() {
 

@@ -10,9 +10,8 @@ async function handleSubmit(event) {
     let userReturn = document.getElementById('uiReturn').value
     console.log(`user entered: ${userReturn}`)
     let currentDiv = document.getElementById('current')
-    // currentDiv.style.display = "none"
     let forecastDiv = document.getElementById('forecast')
-    // forecastDiv.style.display = "flex";
+
 
     // Inspiration from https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
 
@@ -38,14 +37,13 @@ async function handleSubmit(event) {
     console.log("::: Form Submitted :::");
 
     // PixaBay API request
-    getImage(userDestination)
+    await getImage(userDestination)
 
     // GeoNames API request
     await getCoords(userDestination)
 
     // post userInput to serverside, inspiration from project3
-    .then (function(data) {
-        postCoords('http://localhost:3030/add', {
+    await postCoords('http://localhost:3030/add', {
             placeName: data.geonames[0].name,
             lat: data.geonames[0].lat,
             long: data.geonames[0].lng,
@@ -54,10 +52,9 @@ async function handleSubmit(event) {
             daysTillRet: daysTillRet,
             duration: diffDays})
 
-        .then(function(newData) {
+        .then (function(newData) {
             updateUI()
         })
-    })
 };
 
 function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
@@ -81,7 +78,7 @@ async function getImage (userDestination) {
     try {
         const data = await response.json()
         console.log(data)
-        // from https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
+// from https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
         let randomNumber = Math.floor(Math.random() * 20) + 1;
         let dataSelector = data.hits[randomNumber];
 
@@ -209,6 +206,7 @@ const updateUI = async () => {
 };
 
 export {
+    toggleDisplay,
     handleSubmit,
     getImage,
     getCoords,
