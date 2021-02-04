@@ -67,11 +67,31 @@ async function getWeather (req, res) {
         projectData.country = data.country_code;
 
 // forecast data points
-        let current = data.data[0]
+        // let current = data.data[0]
         let tomorrow = data.data[1]
         let arrivalDayIndex = Math.abs(req.body.daysTillDep - 1);
         let returnDay = req.body.daysTillRet;
+        // let duration = req.body.diffDays
         console.log(returnDay)
+
+        // from https://knowledge.udacity.com/questions/474485
+        // an array to store this data:
+        // const WeatherDataArray = data.data
+        // const tripWeatherArray = []
+        // console.log(arrivalDayIndex)
+        // console.log(duration)
+        // // = 8 - 4 = 4 days from today
+        // // So in our example, we'll start from this index i.e index 4
+        // for(let i = arrivalDayIndex; i <= duration; i++ ){
+        //     tripWeatherArray.push(WeatherDataArray[i])
+        //     console.log(tripWeatherArray)
+        //     }
+        // // Now you can iterate through this array to display the desired data:
+        //     tripWeatherArray.map(dayData =>{
+        //         console.log(dayData)
+        // // dayData contains data for each day in the trip
+        //     dayData.high_temp
+        //         })
 
 // from https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
 
@@ -97,6 +117,7 @@ async function getWeather (req, res) {
             return currentWeather(data)
 
         } else {
+
 
             projectData.arrival_0_temp = data.data[arrivalDayIndex].temp;
             projectData.arrival_0_lowTemp = data.data[arrivalDayIndex].low_temp;
@@ -186,7 +207,7 @@ async function getWeather (req, res) {
                         };
                         day6(arrival6,returnDay)
                 }
-    weatherTrip(arrivalDayIndex, returnDay)
+                weatherTrip(arrivalDayIndex, returnDay)
             }
         }
 

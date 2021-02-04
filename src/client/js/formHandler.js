@@ -52,9 +52,7 @@ async function handleSubmit(event) {
             daysTillRet: daysTillRet,
             duration: diffDays})
 
-        .then (function(newData) {
-            updateUI()
-        })
+    await updateUI(newData)
 };
 
 function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
@@ -125,7 +123,7 @@ const postCoords = async (url = '', data = {})=> {
     }catch (error) {
         console.log("error", error);
     }
-}
+};
 
 
 const updateUI = async () => {
