@@ -185,18 +185,23 @@ function forecast(returnDay, tomorrow, data) {
 
   // // from https://knowledge.udacity.com/questions/474485
         // // an array to store this data:
+
         // const WeatherDataArray = data.data
         // const tripWeatherArray = []
         // console.log(arrivalDayIndex)
         // console.log(duration)
+
         // // = 8 - 4 = 4 days from today
         // // So in our example, we'll start from this index i.e index 4
         // for(let i = arrivalDayIndex; i <= duration; i++ ){
         //     tripWeatherArray.push(WeatherDataArray[i])
         //     }
         // // Now you can iterate through this array to display the desired data:
+
         //     tripWeatherArray.map(dayData =>{
+
         // // dayData contains data for each day in the trip
+
         //     const tempArray = Object.values(dayData.temp);
         //     console.log(tempArray)
         //     console.log(typeof tempArray)
@@ -211,93 +216,3 @@ function forecast(returnDay, tomorrow, data) {
         //     console.log(dayData.temp, dayData.low_temp, dayData.high_temp)
         //         })
  
-
-              // projectData.arrival_0_temp = data.data[arrivalDayIndex].temp;
-            // projectData.arrival_0_lowTemp = data.data[arrivalDayIndex].low_temp;
-            // projectData.arrival_0_highTemp = data.data[arrivalDayIndex].high_temp;
-            // projectData.arrival_0_description = data.data[arrivalDayIndex].weather.description;
-            // projectData.arrival_0_icon = data.data[arrivalDayIndex].weather.icon;
-
-            //     function weatherTrip(arrivalDayIndex, returnDay) {
-            //         let arrival0 = data.data[arrivalDayIndex]
-            //         let arrival1 = Math.abs(arrivalDayIndex + 1);
-            //         let arrival2 = Math.abs(arrivalDayIndex + 2);
-            //         let arrival3 = Math.abs(arrivalDayIndex + 3);
-            //         let arrival4 = Math.abs(arrivalDayIndex + 4);
-            //         let arrival5 = Math.abs(arrivalDayIndex + 5);
-            //         let arrival6 = Math.abs(arrivalDayIndex + 6);
-            //         console.log(arrivalDayIndex)
-            //         console.log(arrival6)
-            //         let day1 = (arrival1, returnDay) => {
-            //             if (arrival1 <= returnDay){
-
-            //             return projectData.arrival_1_temp = data.data[arrival1].temp,
-            //             projectData.arrival_1_lowTemp = data.data[arrival1].low_temp,
-            //             projectData.arrival_1_highTemp = data.data[arrival1].high_temp,
-            //             projectData.arrival_1_description = data.data[arrival1].weather.description,
-            //             projectData.arrival_1_icon = data.data[arrival1].weather.icon;
-            //             }
-            //         };
-            //             day1(arrival1,returnDay)
-
-            //         let day2 = (arrival2, returnDay) => {
-            //             if (arrival2 <= returnDay) {
-
-            //             return projectData.arrival_2_temp = data.data[arrival2].temp,
-            //             projectData.arrival_2_lowTemp = data.data[arrival2].low_temp,
-            //             projectData.arrival_2_highTemp = data.data[arrival2].high_temp,
-            //             projectData.arrival_2_description = data.data[arrival2].weather.description,
-            //             projectData.arrival_2_icon = data.data[arrival2].weather.icon;
-            //             }
-            //         };
-            //             day2(arrival2,returnDay)
-
-            //         let day3 = (arrival3, returnDay) => {
-            //         if (arrival3 <= returnDay) {
-
-                        // return projectData.arrival_3_temp = data.data[arrival3].temp,
-                        // projectData.arrival_3_lowTemp = data.data[arrival3].low_temp,
-                        // projectData.arrival_3_highTemp = data.data[arrival3].high_temp,
-                        // projectData.arrival_3_description = data.data[arrival3].weather.description,
-                        // projectData.arrival_3_icon = data.data[arrival3].weather.icon;
-            //             }
-            //         };
-            //             day3(arrival3,returnDay)
-
-            //         let day4 = (arrival4, returnDay) => {
-            //             if (arrival4 <= returnDay) {
-
-            //                 return projectData.arrival_4_temp = data.data[arrival4].temp,
-            //                 projectData.arrival_4_lowTemp = data.data[arrival4].low_temp,
-            //                 projectData.arrival_4_highTemp = data.data[arrival4].high_temp,
-            //                 projectData.arrival_4_description = data.data[arrival4].weather.description,
-            //                 projectData.arrival_4_icon = data.data[arrival4].weather.icon;
-            //                 }
-            //             };
-            //             day4(arrival4,returnDay)
-
-            //         let day5 = (arrival5, returnDay) => {
-            //             if (arrival5 <= returnDay) {
-
-                            // return projectData.arrival_5_temp = data.data[arrival5].temp,
-                            // projectData.arrival_5_lowTemp = data.data[arrival5].low_temp,
-                            // projectData.arrival_5_highTemp = data.data[arrival5].high_temp,
-                            // projectData.arrival_5_description = data.data[arrival5].weather.description,
-                            // projectData.arrival_5_icon = data.data[arrival5].weather.icon;
-            //                 }
-            //             };
-            //             day5(arrival5,returnDay)
-
-            //         let day6 = (arrival6, returnDay) => {
-            //         if (arrival6 <= returnDay) {
-
-                            // return projectData.arrival_6_temp = data.data[arrival6].temp,
-                            // projectData.arrival_6_lowTemp = data.data[arrival6].low_temp,
-                            // projectData.arrival_6_highTemp = data.data[arrival6].high_temp,
-                            // projectData.arrival_6_description = data.data[arrival6].weather.description,
-                            // projectData.arrival_6_icon = data.data[arrival6].weather.icon;
-            //                 }
-            //             };
-            //             day6(arrival6,returnDay)
-            //     }
-            //     weatherTrip(arrivalDayIndex, returnDay)

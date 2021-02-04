@@ -38,7 +38,7 @@ async function handleSubmit(event) {
     console.log(diffDays + " days");
 
     // Set display
-    toggleDisplay(daysTillDep,currentDiv,forecastDiv)
+    toggleDisplay(daysTillDep,daysTillRet, currentDiv,forecastDiv)
 
     // From Project 4
 
@@ -67,8 +67,11 @@ async function handleSubmit(event) {
     })
 };
 
-function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
+function toggleDisplay(daysTillDep, daysTillRet, currentDiv, forecastDiv) {
     if (daysTillDep >= 6) {
+        currentDiv.style.display = "flex";
+        forecastDiv.style.display = "none";
+    } else if (daysTillDep < 6 && daysTillRet > 6 ) {
         currentDiv.style.display = "flex";
         forecastDiv.style.display = "none";
     } else {
