@@ -38,7 +38,7 @@ async function handleSubmit(event) {
     console.log("::: Form Submitted :::");
 
     // PixaBay API request
-    getImage(userDestination)
+    await getImage(userDestination)
 
     // GeoNames API request
     await getCoords(userDestination)
