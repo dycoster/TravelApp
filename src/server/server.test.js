@@ -1,15 +1,20 @@
-// Using template provided in Project Instructions
+// from https://knowledge.udacity.com/questions/336147
+const app = require('./server') // Link to your server file
+const supertest = require('supertest')
+const request = supertest(app)
 
-import { forecast } from "../src/server/server"
 
-// The describe() function takes two arguments - a string description, and a test suite as a callback function.
-// A test suite may contain one or more related tests
-describe("Testing the functionality", () => {
-    // The test() function has two arguments - a string description, and an actual test as a callback function.
-    test("Testing the forecast() function", () => {
-           // Define the input for the function, if any, in the form of variables/array
-           // Define the expected output, if any, in the form of variables/array
-           // The expect() function, in combination with a Jest matcher, is used to check if the function produces the expected output
-           // The general syntax is `expect(myFunction(arg1, arg2, ...)).toEqual(expectedValue);`, where `toEqual()` is a matcher
-           expect(forecast).toBeDefined();
-})});
+it('Testing /all endpoint', async done => {
+  const response = await request.get('/all')
+  expect(response.status).toBe(200) // check if request was successfull
+  expect(response.body).toBeDefined(); // check if response returned value of projecteData
+  done()
+})
+
+// it('gets the /all endpoint', async done => {
+//     const response = await request.get('/test')
+  
+//     expect(response.status).toBe(200)
+//     expect(response.body.message).toBe('pass!')
+//     done()
+//   })
