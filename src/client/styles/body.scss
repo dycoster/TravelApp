@@ -35,6 +35,10 @@ header {
     justify-content: center;
     align-items: center;
     text-shadow: 3px 3px 8px whitesmoke;
+
+    @media only screen and (max-width: 950px) {
+        height: 10vh;
+    }
 }
 
 main {
@@ -50,6 +54,11 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media only screen and (max-width: 950px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 // FORM STYLING
@@ -60,6 +69,18 @@ main {
     align-items: center;
     flex-direction: column;
 
+    @media only screen and (max-width: 950px) {
+        width: 60%;
+        margin-bottom: 5vh;
+        margin-top:  -10vh;
+    }
+
+    @media only screen and (max-width: 580px) {
+        width: 80%;
+    }
+    @media only screen and (max-width: 400px) {
+        width: 90%;
+    }
 
     form {
         display: flex;
@@ -70,6 +91,9 @@ main {
         width: 80%;
         padding: 5vh;
 
+        @media only screen and (max-width: 950px) {
+            padding: 2vh;
+        }
 
         h2{
             font-family: $title-font;
@@ -84,6 +108,10 @@ main {
             display: flex;
             flex-direction: row;
             align-items: center;
+
+            @media only screen and (max-width: 1050px) {
+                width: 100%;
+            }
 
             input {
                 height: 2rem;
@@ -122,6 +150,15 @@ main {
     text-shadow: 2px 2px 8px whitesmoke;
     font-size: 1.25rem;
 
+    @media only screen and (max-width: 1050px) {
+        width: 75%;
+    }
+
+    @media only screen and (max-width: 950px) {
+        width: 95%;
+    }
+
+
     .resultContainer {
         display: flex;
         flex-direction: column;
@@ -134,6 +171,10 @@ main {
         background: $bgresult;
         transition: 1s;
         transition-timing-function: ease-in;
+
+        @media only screen and (max-width: 650px) {
+            width: 95%;
+        }
 
         h2 {
             font-family: $title-font;
@@ -184,11 +225,23 @@ main {
                     }
                 }
         }
-        .description {
+            .description {
 
-            span {
-                font-family:'Lobster Two', cursive;
-                }
+                span {
+                    font-family:'Lobster Two', cursive;
+                    }
         }
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .highTemp, .lowTemp {
+        display: none;
+        }
+    }
+
+@media only screen and (max-width: 400px) {
+    .description{
+        display: none;
     }
 }
