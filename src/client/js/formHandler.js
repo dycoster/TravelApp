@@ -12,6 +12,14 @@ async function handleSubmit(event) {
     let currentDiv = document.getElementById('current')
     let forecastDiv = document.getElementById('forecast')
 
+    let day0 = document.getElementById('day0')
+    let day1 = document.getElementById('day1')
+    let day2 = document.getElementById('day2')
+    let day3 = document.getElementById('day3')
+    let day4 = document.getElementById('day4')
+    let day5 = document.getElementById('day5')
+    let day6 = document.getElementById('day6')
+
 
     // Inspiration from https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
 
@@ -43,7 +51,8 @@ async function handleSubmit(event) {
     await getCoords(userDestination)
 
     // post userInput to serverside, inspiration from project3
-    await postCoords('http://localhost:3030/add', {
+    .then (function(data) {
+        postCoords('http://localhost:3030/add', {
             placeName: data.geonames[0].name,
             lat: data.geonames[0].lat,
             long: data.geonames[0].lng,
@@ -52,7 +61,10 @@ async function handleSubmit(event) {
             daysTillRet: daysTillRet,
             duration: diffDays})
 
-    await updateUI(newData)
+        .then(function(newData) {
+            updateUI()
+        })
+    })
 };
 
 function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
@@ -60,8 +72,41 @@ function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
         currentDiv.style.display = "flex";
         forecastDiv.style.display = "none";
     } else {
-        currentDiv.style.display = "none";
-        forecastDiv.style.display = "flex";
+
+        // if (daysTillDep = 0) {
+        //     day0.style.display = "flex";
+        //     // currentDiv.style.display = "none";
+        //     // forecastDiv.style.display = "flex";
+        // }
+        if (daysTillDep > 0) {
+            day0.style.display = "none";
+            currentDiv.style.display = "none";
+            forecastDiv.style.display = "flex";
+        } else {day0.style.display = "flex"}
+
+        if (daysTillDep > 1) {
+            day1.style.display = "none";
+        } else {day1.style.display = "flex"}
+
+        if (daysTillDep > 2) {
+            day2.style.display = "none";
+        } else {day2.style.display = "flex"}
+
+        if (daysTillDep > 3) {
+            day3.style.display = "none"
+        } else {day3.style.display = "flex"}
+
+        if (daysTillDep > 4) {
+            day4.style.display = "none"
+        } else {day4.style.display = "flex"}
+
+        if (daysTillDep > 5) {
+            day5.style.display = "none"
+        } else {day5.style.display = "flex"}
+
+        if (daysTillDep > 6) {
+            day6.style.display = "none"
+        } else {day6.style.display = "flex"}
     }
 };
 
@@ -146,22 +191,25 @@ const updateUI = async () => {
         document.getElementById('highTempTomorrow').innerHTML = `max: <span>${allData.tomorrowHighTemp}</span> °C`;
         document.getElementById('lowTempTomorrow').innerHTML = `min: <span>${allData.tomorrowLowTemp}</span> °C`;
 
-// Weather on day of arrival
+// Day 0
+        document.getElementById('date0').innerHTML = `${allData.date0}`;
         document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
-        document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_0_icon}.png`);
-        document.getElementById('tempResultForecast').innerHTML = `<span>${allData.arrival_0_temp}</span>  °C`;
-        document.getElementById('descriptionForecast').innerHTML = `<span>${allData.arrival_0_description}</span>`;
-        document.getElementById('highTempForecast').innerHTML = `max: <span>${allData.arrival_0_highTemp}</span> °C`;
-        document.getElementById('lowTempForecast').innerHTML = `min: <span>${allData.arrival_0_lowTemp}</span> °C`;
+        document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.currentIcon}.png`);
+        document.getElementById('tempResultForecast').innerHTML = `<span>${allData.currentTemp}</span>  °C`;
+        document.getElementById('descriptionForecast').innerHTML = `<span>${allData.currentDescription}</span>`;
+        document.getElementById('highTempForecast').innerHTML = `max: <span>${allData.currentHighTemp}</span> °C`;
+        document.getElementById('lowTempForecast').innerHTML = `min: <span>${allData.currentLowTemp}</span> °C`;
 
 // Day 1
-        document.getElementById('iconResultForecast1').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_1_icon}.png`);
-        document.getElementById('tempResultForecast1').innerHTML = `<span>${allData.arrival_1_temp}</span>  °C`;
-        document.getElementById('descriptionForecast1').innerHTML = `<span>${allData.arrival_1_description}</span>`;
-        document.getElementById('highTempForecast1').innerHTML = `max: <span>${allData.arrival_1_highTemp}</span> °C`;
-        document.getElementById('lowTempForecast1').innerHTML = `min: <span>${allData.arrival_1_lowTemp}</span> °C`;
+        document.getElementById('date1').innerHTML = `${allData.date1}`;
+        document.getElementById('iconResultForecast1').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.tomorrowIcon}.png`);
+        document.getElementById('tempResultForecast1').innerHTML = `<span>${allData.tomorrowTemp}</span>  °C`;
+        document.getElementById('descriptionForecast1').innerHTML = `<span>${allData.tomorrowDescription}</span>`;
+        document.getElementById('highTempForecast1').innerHTML = `max: <span>${allData.tomorrowHighTemp}</span> °C`;
+        document.getElementById('lowTempForecast1').innerHTML = `min: <span>${allData.tomorrowLowTemp}</span> °C`;
 
  // Day 2
+        document.getElementById('date2').innerHTML = `${allData.date2}`;
         document.getElementById('iconResultForecast2').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_2_icon}.png`);
         document.getElementById('tempResultForecast2').innerHTML = `<span>${allData.arrival_2_temp}</span>  °C`;
         document.getElementById('descriptionForecast2').innerHTML = `<span>${allData.arrival_2_description}</span>`;
@@ -169,6 +217,7 @@ const updateUI = async () => {
         document.getElementById('lowTempForecast2').innerHTML = `min: <span>${allData.arrival_2_lowTemp}</span> °C`;
 
  // Day 3
+        document.getElementById('date3').innerHTML = `${allData.date3}`;
         document.getElementById('iconResultForecast3').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_3_icon}.png`);
         document.getElementById('tempResultForecast3').innerHTML = `<span>${allData.arrival_3_temp}</span>  °C`;
         document.getElementById('descriptionForecast3').innerHTML = `<span>${allData.arrival_3_description}</span>`;
@@ -176,6 +225,7 @@ const updateUI = async () => {
         document.getElementById('lowTempForecast3').innerHTML = `min: <span>${allData.arrival_3_lowTemp}</span> °C`;
 
 // Day 4
+        document.getElementById('date4').innerHTML = `${allData.date4}`;
         document.getElementById('iconResultForecast4').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_4_icon}.png`);
         document.getElementById('tempResultForecast4').innerHTML = `<span>${allData.arrival_4_temp}</span>  °C`;
         document.getElementById('descriptionForecast4').innerHTML = `<span>${allData.arrival_4_description}</span>`;
@@ -183,6 +233,7 @@ const updateUI = async () => {
         document.getElementById('lowTempForecast4').innerHTML = `min: <span>${allData.arrival_4_lowTemp}</span> °C`;
 
 // Day 5
+        document.getElementById('date5').innerHTML = `${allData.date5}`;
         document.getElementById('iconResultForecast5').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_5_icon}.png`);
         document.getElementById('tempResultForecast5').innerHTML = `<span>${allData.arrival_5_temp}</span>  °C`;
         document.getElementById('descriptionForecast5').innerHTML = `<span>${allData.arrival_5_description}</span>`;
@@ -190,6 +241,7 @@ const updateUI = async () => {
         document.getElementById('lowTempForecast5').innerHTML = `min: <span>${allData.arrival_5_lowTemp}</span> °C`;
 
 // Day 6
+        document.getElementById('date6').innerHTML = `${allData.date6}`;
         document.getElementById('iconResultForecast6').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.arrival_6_icon}.png`);
         document.getElementById('tempResultForecast6').innerHTML = `<span>${allData.arrival_6_temp}</span>  °C`;
         document.getElementById('descriptionForecast6').innerHTML = `<span>${allData.arrival_6_description}</span>`;
