@@ -6,11 +6,6 @@ dotenv.config();
 const wbUrl = 'https://api.weatherbit.io/v2.0/forecast/daily?lat='
 const wbk = process.env.weatherBitKey
 
-const pbk = process.env.pixabayKey
-const pbUrl = `https://pixabay.com/api/?key=${pbk}`
-
-
-
 // Require Express to run server and routes
 const express = require('express');
 

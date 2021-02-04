@@ -12,6 +12,7 @@ async function handleSubmit(event) {
     let currentDiv = document.getElementById('current')
     let forecastDiv = document.getElementById('forecast')
 
+    // Set display of forecastDivs
     let day0 = document.getElementById('day0')
     let day1 = document.getElementById('day1')
     let day2 = document.getElementById('day2')
@@ -39,10 +40,6 @@ async function handleSubmit(event) {
 
     // Set display
     toggleDisplay(daysTillDep,daysTillRet, currentDiv,forecastDiv)
-
-    // From Project 4
-
-    console.log("::: Form Submitted :::");
 
     // PixaBay API request
     await getImage(userDestination)
