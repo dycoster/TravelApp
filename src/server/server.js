@@ -1,4 +1,4 @@
-projectData = {};
+let projectData = {};
 
 // API'S
 const dotenv = require('dotenv');
@@ -17,6 +17,7 @@ const express = require('express');
 // Start up an instance of app
 const app = express();
 
+module.exports = app
 /* Middleware*/
 const bodyParser = require('body-parser');
 
@@ -34,15 +35,6 @@ const fetch = require('node-fetch')
 
 // Initialize the main project folder
 app.use(express.static('dist'))
-
-// Setup Server
-const port = 3030;
-
-const server = app.listen(port, listening);
-
-function listening() {
-    console.log(`running on localhost: ${port}`);
-}
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
@@ -68,11 +60,10 @@ async function getWeather (req, res) {
 
 // forecast data points
         // let current = data.data[0]
-        let tomorrow = data.data[1]
+        let tomorrow = data.data[1];
         let arrivalDayIndex = req.body.daysTillDep;
         let returnDay = req.body.daysTillRet;
         // let duration = req.body.duration;
-        console.log(returnDay)
 
         // // from https://knowledge.udacity.com/questions/474485
         // // an array to store this data:
@@ -213,6 +204,7 @@ app.get('/all', function (req, res) {
     res.send(projectData);
   })
 
+ 
 
               // projectData.arrival_0_temp = data.data[arrivalDayIndex].temp;
             // projectData.arrival_0_lowTemp = data.data[arrivalDayIndex].low_temp;
