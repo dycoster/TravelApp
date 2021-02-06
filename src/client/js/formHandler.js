@@ -48,8 +48,7 @@ async function handleSubmit(event) {
     await getCoords(userDestination)
 
     // post userInput to serverside, inspiration from project3
-    const post =  async (data) => {
-        await postCoords('http://localhost:3030/add', {
+    res = await postCoords('http://localhost:3030/add', {
             placeName: data.geonames[0].name,
             lat: data.geonames[0].lat,
             long: data.geonames[0].lng,
@@ -57,11 +56,10 @@ async function handleSubmit(event) {
             daysTillDep: daysTillDep,
             daysTillRet: daysTillRet,
             duration: diffDays})
-    };
+
     // Update the UI
-    const update = async (newData) => {
-        await updateUI()
-    }
+    res = await updateUI()
+
 };
 
 function toggleDisplay(daysTillDep, daysTillRet, currentDiv, forecastDiv) {
