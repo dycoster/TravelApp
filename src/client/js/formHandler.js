@@ -36,9 +36,6 @@ async function handleSubmit(event) {
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    console.log(daysTillDep + " days");
-    console.log(diffDays + " days");
-
     // Set display
     toggleDisplay(daysTillDep,daysTillRet, currentDiv,forecastDiv, locationForecast)
 
