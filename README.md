@@ -1,7 +1,14 @@
 # Capstone - Travel App
 
 ## Overview
-This project aims to combine all skills learned in the previous projects to build our own custom travel app. This app allows the user to fill in a travel destination and traveling dates. Upon page load the app will display the current weahter from the users location. Upon submit the app will display a background image of the travel destination and a weather forecast of the destination depending of how far in advance the travel plans are. If the user is traveling within a week the forecast will be of this week starting with their arrival day. If the trip is later the current weatehr will be displayed. 
+This project aims to combine all skills learned in the previous projects to build our own custom travel app. This app allows the user to fill in a travel destination and traveling dates. Upon page load the app will display the current weahter from the users location. Upon submit the app will display a background image of the travel destination and a weather forecast of the destination depending of how far in advance the travel plans are. If the user is traveling within a week the forecast will be of this week starting with their arrival day. If the trip is later the current weather will be displayed.
+I choose the following options from the Extend your Project/Ways to Stand Out sections:
+
+* Add end date and display length of trip.
+* Incorporate icons into forecast.
+* Instead of just pulling a single day forecast, pull the forecast for multiple days.
+* And I've added the current weather at the users location upon page load.  
+
 
 ## Instructions
 This will require a understanding of JavaScript, create clean and appealing HTML/CSS, targeting the DOM, working with objects and retrieving data from 3 APIs in which one of those is reliant on another to work. Finally this is all going to be done in a Webpack environment, using an express server and wrapped up with service workers.
