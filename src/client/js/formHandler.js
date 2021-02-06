@@ -13,13 +13,13 @@ async function handleSubmit(event) {
     let forecastDiv = document.getElementById('forecast')
 
     // Set display of forecastDivs
-    let day0 = document.getElementById('day0')
-    let day1 = document.getElementById('day1')
-    let day2 = document.getElementById('day2')
-    let day3 = document.getElementById('day3')
-    let day4 = document.getElementById('day4')
-    let day5 = document.getElementById('day5')
-    let day6 = document.getElementById('day6')
+    const day0 = document.getElementById('day0')
+    const day1 = document.getElementById('day1')
+    const day2 = document.getElementById('day2')
+    const day3 = document.getElementById('day3')
+    const day4 = document.getElementById('day4')
+    const day5 = document.getElementById('day5')
+    const day6 = document.getElementById('day6')
 
 
     // Inspiration from https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
@@ -47,7 +47,8 @@ async function handleSubmit(event) {
     // GeoNames API request
     await getCoords(userDestination)
 
-    // post userInput to serverside, inspiration from project3 Unsure how to refactor to await and arrow functions.. 
+    // post userInput to serverside, inspiration from project3 Unsure how to refactor to await and arrow functions..
+    // have tried suggestions from https://stackoverflow.com/questions/42964102/syntax-for-async-arrow-function
     .then (function(data) {
         postCoords('http://localhost:3030/add', {
             placeName: data.geonames[0].name,
@@ -176,6 +177,7 @@ const updateUI = async () => {
     try{
         const allData = await request.json();
         console.log(allData)
+
 // today's weather
         document.getElementById('locationResultCurrent').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
         document.getElementById('iconResultCurrent').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.currentIcon}.png`);
@@ -192,6 +194,7 @@ const updateUI = async () => {
         document.getElementById('lowTempTomorrow').innerHTML = `min: <span>${allData.tomorrowLowTemp}</span> °C`;
 
 // Day 0
+        document.getElementById('durationTrip').innerHTML = `You'll be staying for ${allData.duration} days`
         document.getElementById('date0').innerHTML = `${allData.date0}`;
         document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
         document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.currentIcon}.png`);

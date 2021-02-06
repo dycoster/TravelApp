@@ -12,8 +12,6 @@ const express = require('express');
 // Start up an instance of app
 const app = express();
 
-module.exports = app
-
 /* Middleware*/
 const bodyParser = require('body-parser');
 
@@ -27,7 +25,7 @@ const { response } = require('express');
 app.use(cors());
 
 // to allow making fetch requests in server
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
 
 // Initialize the main project folder
 app.use(express.static('dist'))
@@ -60,11 +58,11 @@ async function getWeather (req, res) {
 // location
         projectData.placeName = data.city_name;
         projectData.country = data.country_code;
+        projectData.duration = req.body.duration;
 
 // forecast data points
         let tomorrow = data.data[1];
         let returnDay = req.body.daysTillRet;
-        // let duration = req.body.duration;
         // let arrivalDayIndex = req.body.daysTillDep;
 
         forecast(returnDay, tomorrow, data)
@@ -77,12 +75,14 @@ async function getWeather (req, res) {
     }
 }
 
+
 // Add a GET route that returns the projectData object
 app.get('/all', function (req, res) {
     res.send(projectData);
   })
 
-function forecast(returnDay, tomorrow, data) {
+
+const forecast = (returnDay, tomorrow, data) => {
     if (returnDay >= 7) {
 
         function currentWeather(tomorrow, data) {
@@ -177,6 +177,8 @@ function forecast(returnDay, tomorrow, data) {
         }
     }
 
+    // Export module for testing
+    module.exports = app
 
   // // from https://knowledge.udacity.com/questions/474485
         // // an array to store this data:
