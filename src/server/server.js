@@ -36,14 +36,9 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
-// Setup Server
-const port = 3030;
+// Export module for testing
+module.exports = app
 
-const server = app.listen(port, listening);
-
-function listening() {
-    console.log(`running on localhost: ${port}`);
-}
 
 // WeatherBit API request with geonamesCoords
 app.post('/add', getWeather);
@@ -178,8 +173,7 @@ if (returnDay >= 7) {
         }
     }
 
-    // Export module for testing
-    module.exports = app
+
 
   // // from https://knowledge.udacity.com/questions/474485
         // // an array to store this data:

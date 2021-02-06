@@ -35,7 +35,7 @@ Make sure Node and npm are installed from the terminal.
 node -v
 npm -v
 
-Fork this repo and clone to begin your project setup and install everything: 
+Fork this repo and clone to begin your project setup and install everything:
 
 `cd` <project directory>
 `npm install`
@@ -55,7 +55,9 @@ Sign up for the API-key's at geonames.org  weatherbit.io   pixabay.com
 
 You'll need to configure environment variables using the dotenv package:
 
-Use npm to install the dotenv package - npm install dotenv
+Use npm to install the dotenv package 
+
+npm install dotenv
 
 Create a new .env file in the root of your project.
 
