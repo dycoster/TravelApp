@@ -11,6 +11,7 @@ async function handleSubmit(event) {
     console.log(`user entered: ${userReturn}`)
     let currentDiv = document.getElementById('current')
     let forecastDiv = document.getElementById('forecast')
+    let locationForecast = document.getElementById('locationResultForecast')
 
     // Set display of forecastDivs
     const day0 = document.getElementById('day0')
@@ -39,7 +40,7 @@ async function handleSubmit(event) {
     console.log(diffDays + " days");
 
     // Set display
-    toggleDisplay(daysTillDep,daysTillRet, currentDiv,forecastDiv)
+    toggleDisplay(daysTillDep,daysTillRet, currentDiv,forecastDiv, locationForecast)
 
     // PixaBay API request
     await getImage(userDestination)
@@ -65,13 +66,15 @@ async function handleSubmit(event) {
     })
 };
 
-const toggleDisplay = (daysTillDep, daysTillRet, currentDiv, forecastDiv) => {
+const toggleDisplay = (daysTillDep, daysTillRet, currentDiv, forecastDiv, locationForecast) => {
     if (daysTillDep >= 6) {
         currentDiv.style.display = "flex";
         forecastDiv.style.display = "none";
+        locationForecast.style.display = "none";
     } else if (daysTillDep < 6 && daysTillRet > 6 ) {
         currentDiv.style.display = "flex";
         forecastDiv.style.display = "none";
+        locationForecast.style.display = "none";
     } else {
 
         // if (daysTillDep = 0) {
@@ -194,7 +197,7 @@ const updateUI = async () => {
         document.getElementById('lowTempTomorrow').innerHTML = `min: <span>${allData.tomorrowLowTemp}</span> °C`;
 
 // Day 0
-        document.getElementById('durationTripForecast').innerHTML = `You'll be staying for ${allData.duration} days`;
+        document.getElementById('durationTripForecast').innerHTML = `You'll be staying for ${allData.duration} day(s)`;
         document.getElementById('date0').innerHTML = `${allData.date0}`;
         document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
         document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.currentIcon}.png`);
