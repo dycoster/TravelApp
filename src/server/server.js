@@ -63,45 +63,44 @@ async function getWeather (req, res) {
 // forecast data points
         let tomorrow = data.data[1];
         let returnDay = req.body.daysTillRet;
-        // let arrivalDayIndex = req.body.daysTillDep;
+// let arrivalDayIndex = req.body.daysTillDep;
 
-        forecast(returnDay, tomorrow, data)
+        forecast(data, returnDay, tomorrow)
 
-        res.send(projectData);
-        console.log(projectData);
+    res.send(projectData);
+    console.log(projectData);
 
     } catch (error) {
-        console.log('error', error)
+    console.log('error', error)
     }
-}
+};
 
 
 // Add a GET route that returns the projectData object
 app.get('/all', function (req, res) {
-    res.send(projectData);
-  })
+res.send(projectData);
+});
 
 
-const forecast = (returnDay, tomorrow, data) => {
-    if (returnDay >= 7) {
+const forecast = (data, returnDay, tomorrow) => {
+if (returnDay >= 7) {
 
-        function currentWeather(tomorrow, data) {
-            // today
-                    projectData.currentTemp = data.data[0].temp;
-                    projectData.currentLowTemp = data.data[0].low_temp;
-                    projectData.currentHighTemp = data.data[0].high_temp;
-                    projectData.currentDescription = data.data[0].weather.description;
-                    projectData.currentIcon = data.data[0].weather.icon;
-            // tomorrow
-                    projectData.tomorrowTemp = tomorrow.temp;
-                    projectData.tomorrowLowTemp = tomorrow.low_temp;
-                    projectData.tomorrowHighTemp = tomorrow.high_temp;
-                    projectData.tomorrowDescription = tomorrow.weather.description;
-                    projectData.tomorrowIcon = tomorrow.weather.icon;
-                }
-        return currentWeather(data)
+// ((tomorrow, data) => {
+    // today
+            projectData.currentTemp = data.data[0].temp;
+            projectData.currentLowTemp = data.data[0].low_temp;
+            projectData.currentHighTemp = data.data[0].high_temp;
+            projectData.currentDescription = data.data[0].weather.description;
+            projectData.currentIcon = data.data[0].weather.icon;
+    // tomorrow
+            projectData.tomorrowTemp = tomorrow.temp;
+            projectData.tomorrowLowTemp = tomorrow.low_temp;
+            projectData.tomorrowHighTemp = tomorrow.high_temp;
+            projectData.tomorrowDescription = tomorrow.weather.description;
+            projectData.tomorrowIcon = tomorrow.weather.icon;
+        // })();
 
-    } else {
+} else {
 
             // today
             // from https://stackoverflow.com/questions/40232218/how-to-reverse-date-format-yyyy-mm-dd-using-javascript-jquery

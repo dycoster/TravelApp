@@ -194,7 +194,7 @@ const updateUI = async () => {
         document.getElementById('lowTempTomorrow').innerHTML = `min: <span>${allData.tomorrowLowTemp}</span> °C`;
 
 // Day 0
-        document.getElementById('durationTrip').innerHTML = `You'll be staying for ${allData.duration} days`
+        document.getElementById('durationTripForecast').innerHTML = `You'll be staying for ${allData.duration} days`;
         document.getElementById('date0').innerHTML = `${allData.date0}`;
         document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country}`;
         document.getElementById('iconResultForecast').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${allData.currentIcon}.png`);
