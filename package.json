@@ -4,7 +4,7 @@
   "description": "Udacity Capstone Travel App Project 5 ",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start": "node src/server/server.js",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack serve  --config webpack.dev.js --open"

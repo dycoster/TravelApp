@@ -1,6 +1,6 @@
 // from https://knowledge.udacity.com/questions/336147
-const app = require('./server') // Link to your server file
-const supertest = require('supertest')
+import app from './server' // Link to your server file
+import supertest from 'supertest'
 const request = supertest(app)
 
 
