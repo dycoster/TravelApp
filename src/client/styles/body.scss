@@ -1,11 +1,7 @@
-* {
-    margin: 0;
-    border: 0;
-    box-sizing: border-box;
-}
 $primary-font: 'Lobster Two', cursive;
 $title-font: 'Lobster', cursive;
 $color: #2D1832;
+$color_shadow: whitesmoke;
 $bg:rgba($color: #EBF4FA, $alpha: 0.4);
 $bgresult:rgba($color: #EBF4FA, $alpha: 0.6);
 $contrast: #e26803;
@@ -34,7 +30,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: 3px 3px 8px whitesmoke;
+    text-shadow: 3px 3px 8px $color_shadow;
 
     @media only screen and (max-width: 950px) {
         height: 10vh;
@@ -75,12 +71,10 @@ main {
         margin-top:  -10vh;
     }
 
-    @media only screen and (max-width: 580px) {
-        width: 80%;
+    @media only screen and (max-width: 650px) {
+        width: 95%;
     }
-    @media only screen and (max-width: 400px) {
-        width: 90%;
-    }
+
 
     form {
         display: flex;
@@ -94,10 +88,13 @@ main {
         @media only screen and (max-width: 950px) {
             padding: 2vh;
         }
+        @media only screen and (max-width: 650px) {
+            width: 95%;
+        }
 
         h2{
             font-family: $title-font;
-            text-shadow: 3px 3px 8px whitesmoke;
+            text-shadow: 3px 3px 8px $color_shadow;
             padding-bottom: 1.5rem;
             text-align: center;
         }
@@ -110,7 +107,7 @@ main {
             align-items: center;
 
             @media only screen and (max-width: 1050px) {
-                width: 100%;
+                width: 90%;
             }
 
             input {
@@ -123,13 +120,13 @@ main {
 }
 
 #submit {
-    color: whitesmoke;
+    color: $color_shadow;
     background-color: $contrast;
 }
 
 #submit:hover {
     color: $contrast;
-    background-color: whitesmoke;
+    background-color: $color_shadow;
     border: 1px solid $contrast;
 }
 
@@ -147,7 +144,7 @@ main {
     width: 60%;
     font-family: $title-font;
     color: $color;
-    text-shadow: 2px 2px 8px whitesmoke;
+    text-shadow: 2px 2px 8px $color_shadow;
     font-size: 1.25rem;
 
     @media only screen and (max-width: 1050px) {
@@ -179,7 +176,7 @@ main {
         h2 {
             font-family: $title-font;
             color: $color;
-            text-shadow: 3px 3px 8px whitesmoke;
+            text-shadow: 3px 3px 8px $color_shadow;
             font-size: 1.5rem;
         }
 
