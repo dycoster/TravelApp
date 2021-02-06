@@ -47,8 +47,9 @@ async function handleSubmit(event) {
     // GeoNames API request
     await getCoords(userDestination)
 
-    // post userInput to serverside, inspiration from project3
-    res = await postCoords('http://localhost:3030/add', {
+    // post userInput to serverside, inspiration from project3 Unsure how to refactor to await and arrow functions.. 
+    .then (function(data) {
+        postCoords('http://localhost:3030/add', {
             placeName: data.geonames[0].name,
             lat: data.geonames[0].lat,
             long: data.geonames[0].lng,
@@ -57,12 +58,13 @@ async function handleSubmit(event) {
             daysTillRet: daysTillRet,
             duration: diffDays})
 
-    // Update the UI
-    res = await updateUI()
-
+        .then(function(newData) {
+            updateUI()
+        })
+    })
 };
 
-function toggleDisplay(daysTillDep, daysTillRet, currentDiv, forecastDiv) {
+const toggleDisplay = (daysTillDep, daysTillRet, currentDiv, forecastDiv) => {
     if (daysTillDep >= 6) {
         currentDiv.style.display = "flex";
         forecastDiv.style.display = "none";
@@ -109,7 +111,7 @@ function toggleDisplay(daysTillDep, daysTillRet, currentDiv, forecastDiv) {
 };
 
 // PixaBay API Request
-async function getImage (userDestination) {
+const getImage = async(userDestination) => {
 
 
     let imageUrl = `https://pixabay.com/api/?key=20000501-dad6322171b2d4f4f813207da&q=${userDestination}&image_type=photo`
@@ -132,7 +134,7 @@ async function getImage (userDestination) {
 
 
 // geoNames API Request
-async function getCoords(userDestination) {
+const getCoords = async(userDestination) => {
 
     let geoUrl = `http://api.geonames.org/searchJSON?q=${userDestination}&maxRows=1&username=dycoster`;
 
