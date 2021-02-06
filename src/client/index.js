@@ -1,6 +1,7 @@
 import { performAction } from './js/app'
 import { handleSubmit, toggleDisplay, getImage, getCoords, postCoords, updateUI } from './js/formHandler'
 import './styles/body.scss'
+import './styles/resets.scss'
 
 
 // add eventlistener with callback action
