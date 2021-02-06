@@ -88,6 +88,11 @@ The app opens on localhost 3000.
 
 The server listens on port 3030.
 
+To run Jest Test on the server 'comment out' the Setup Server part of server.js
+
+and run: npm run test
+
+
 
 ## Known issues
 There is a compatibility issue with the terser plugin. The plugin needs to be downgrade in the package.json file to

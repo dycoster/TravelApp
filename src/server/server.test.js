@@ -10,11 +10,3 @@ it('Testing /all endpoint', async done => {
   expect(response.body).toBeDefined(); // check if response returned value of projecteData
   done()
 })
-
-// it('gets the /all endpoint', async done => {
-//     const response = await request.get('/test')
-  
-//     expect(response.status).toBe(200)
-//     expect(response.body.message).toBe('pass!')
-//     done()
-//   })
