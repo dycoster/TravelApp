@@ -129,51 +129,26 @@ const updateUI = async () => {
 
     try{
         const allData = await request.json();
-        console.log(allData)
         
-        document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, <span>${allData.country};`
-
-        document.getElementById('day0').innerHTML =
-            `<div class="date"><span>${allData.dates[0]}</span></div>
-            <div class="temp"><span>${allData.temps[0]}</span> °C</div>
-            <div class="description"><span>${allData.descriptions[0]}</span></div>
-            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[0]}.png">`;
-
-        document.getElementById('day1').innerHTML =
-            `<div class="date"><span>${allData.dates[1]}</span></div>
-            <div class="temp"><span>${allData.temps[1]}</span> °C</div>
-            <div class="description"><span>${allData.descriptions[1]}</span></div>
-            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[1]}.png">`;
-
-        document.getElementById('day2').innerHTML =
-            `<div class="date"><span>${allData.dates[2]}</span></div>
-            <div class="temp"><span>${allData.temps[2]}</span> °C</div>
-            <div class="description"><span>${allData.descriptions[2]}</span></div>
-            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[2]}.png">`;
-
-        document.getElementById('day3').innerHTML =
-            `<div class="date"><span>${allData.dates[3]}</span></div>
-            <div class="temp"><span>${allData.temps[3]}</span> °C</div>
-            <div class="description"><span>${allData.descriptions[3]}</span></div>
-            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[3]}.png">`;
-
-        document.getElementById('day4').innerHTML =
-            `<div class="date"><span>${allData.dates[4]}</span></div>
-            <div class="temp"><span>${allData.temps[4]}</span> °C</div>
-            <div class="description"><span>${allData.descriptions[4]}</span></div>
-            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[4]}.png">`;
-
-        document.getElementById('day5').innerHTML =
-            `<div class="date"><span>${allData.dates[5]}</span></div>
-            <div class="temp"><span>${allData.temps[5]}</span> °C</div>
-            <div class="description"><span>${allData.descriptions[5]}</span></div>
-            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[5]}.png">`;
-
-        document.getElementById('day6').innerHTML =
-            `<div class="date"><span>${allData.dates[6]}</span></div>
-            <div class="temp"><span>${allData.temps[6]}</span> °C</div>
-            <div class="description"><span>${allData.descriptions[6]}</span></div>
-            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[6]}.png">`;
+    // Todays weather
+        // document.getElementById('locationResultCurrent').innerHTML = `<span>${allData.placeName}</span>, ${allData.country};`
+        // document.getElementById('today').innerHTML =
+        // `<div class="date"><span>${allData.todayDate}</span></div>
+        // <div class="temp"><span>${allData.todayTemp}</span> °C</div>
+        // <div class="description"><span>${allData.todayDescription}</span></div>
+        // <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.todayIcon}.png">`;
+        
+    // Forecasted weather
+        document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country};`
+        
+        for (let i = 0; i < 7; i++) {
+            const divId = `day${i}`;
+              document.getElementById(divId).innerHTML =
+                  `<div class="date"><span>${allData.dates[i]}</span></div>
+                  <div class="temp"><span>${allData.temps[i]}</span> °C</div>
+                  <div class="description"><span>${allData.descriptions[i]}</span></div>
+                  <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[i]}.png">`;
+            }
     }
     catch (error) {
         console.log("error", error);

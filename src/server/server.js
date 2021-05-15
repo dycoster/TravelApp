@@ -59,9 +59,14 @@ async function getWeather (req, res) {
 
     try {
         const data = await response.json()
- 
-// location
 
+// today
+        // projectData.todayTemp = data.data[0].temp
+        // projectData.todayDescription = data.data[0].weather.description
+        // projectData.todayIcon = data.data[0].weather.icon
+        // projectData.todayDate = data.data[0].valid_date.split("-").reverse().join("-")
+
+// location
         projectData.placeName = data.city_name;
         projectData.country = data.country_code;
 
