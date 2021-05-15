@@ -59,41 +59,8 @@ function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
         currentDiv.style.display = "flex";
         forecastDiv.style.display = "none";
     } else {
-
-        if (daysTillDep = 0) {
-            day0.style.display = "flex";
-            currentDiv.style.display = "none";
-            forecastDiv.style.display = "flex";
-        }
-        if (daysTillDep > 0) {
-            day0.style.display = "none";
-            currentDiv.style.display = "none";
-            forecastDiv.style.display = "flex";
-        } else {day0.style.display = "flex"}
-
-        if (daysTillDep > 1) {
-            day1.style.display = "none";
-        } else {day1.style.display = "flex"}
-
-        if (daysTillDep > 2) {
-            day2.style.display = "none";
-        } else {day2.style.display = "flex"}
-
-        if (daysTillDep > 3) {
-            day3.style.display = "none"
-        } else {day3.style.display = "flex"}
-
-        if (daysTillDep > 4) {
-            day4.style.display = "none"
-        } else {day4.style.display = "flex"}
-
-        if (daysTillDep > 5) {
-            day5.style.display = "none"
-        } else {day5.style.display = "flex"}
-
-        if (daysTillDep > 6) {
-            day6.style.display = "none"
-        } else {day6.style.display = "flex"}
+        currentDiv.style.display = "none";
+        forecastDiv.style.display = "flex";
     }
 };
 
@@ -170,8 +137,7 @@ const updateUI = async () => {
             <div class="description" id="descriptionForecast">${allData.descriptions[0]}</div>
             <div class="highTemp" id="highTempForecast">${allData.high_temps[0]}</div>
             <div class="lowTemp" id="lowTempForecast">${allData.low_temps[0]}</div>
-            <img class="icon" id="iconResultForecast">${allData.icons[0]}`;
-    
+            <img class="icon" id="iconResultForecast" src="https://www.weatherbit.io/static/img/icons/${allData.icons[0]}.png">`;
 
         document.getElementById('day1').innerHTML =
             `<div class="date" id="date1">${allData.dates[1]}</div>
@@ -179,7 +145,7 @@ const updateUI = async () => {
             <div class="description" id="descriptionForecast1">${allData.descriptions[1]}</div>
             <div class="highTemp" id="highTempForecast1">${allData.high_temps[1]}</div>
             <div class="lowTemp" id="lowTempForecast1">${allData.low_temps[1]}</div>
-            <img class="icon" id="iconResultForecast1">${allData.icons[1]}`;
+            <img class="icon" id="iconResultForecast1" src="https://www.weatherbit.io/static/img/icons/${allData.icons[1]}.png">`;
         
 
 
