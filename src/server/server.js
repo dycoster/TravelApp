@@ -80,13 +80,21 @@ async function getWeather (req, res) {
         const tripWeatherArray = []
 
         for(let i = arrivalDayIndex; i <= returnDayIndex; i++ ){
-            tripWeatherArray.push(WeatherDataArray[i])
+            if (i<13) { tripWeatherArray.push(WeatherDataArray[i])
+                projectData.temps = tripWeatherArray.map(dayData => dayData.temp)
+                projectData.descriptions = tripWeatherArray.map(dayData => dayData.weather.description)
+                projectData.icons = tripWeatherArray.map(dayData => dayData.weather.icon)
+                projectData.dates = tripWeatherArray.map(dayData => dayData.valid_date.split("-").reverse().join("-"))
             }
+            if (i>=13) {
+                projectData.todayTemp = data.data[0].temp
+                projectData.todayDescription = data.data[0].weather.description
+                projectData.todayIcon = data.data[0].weather.icon
+                projectData.todayDate = data.data[0].valid_date.split("-").reverse().join("-")
+            }
+        }
 
-            projectData.temps = tripWeatherArray.map(dayData => dayData.temp)
-            projectData.descriptions = tripWeatherArray.map(dayData => dayData.weather.description)
-            projectData.icons = tripWeatherArray.map(dayData => dayData.weather.icon)
-            projectData.dates = tripWeatherArray.map(dayData => dayData.valid_date.split("-").reverse().join("-"))
+
 
         res.send(projectData);
         console.log(projectData);
