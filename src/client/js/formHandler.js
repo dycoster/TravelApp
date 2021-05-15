@@ -60,11 +60,11 @@ function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
         forecastDiv.style.display = "none";
     } else {
 
-        // if (daysTillDep = 0) {
-        //     day0.style.display = "flex";
-        //     // currentDiv.style.display = "none";
-        //     // forecastDiv.style.display = "flex";
-        // }
+        if (daysTillDep = 0) {
+            day0.style.display = "flex";
+            currentDiv.style.display = "none";
+            forecastDiv.style.display = "flex";
+        }
         if (daysTillDep > 0) {
             day0.style.display = "none";
             currentDiv.style.display = "none";
@@ -164,23 +164,23 @@ const updateUI = async () => {
         const allData = await request.json();
         console.log(allData)
         
-        document.getElementById('day0').append(
+        document.getElementById('day0').innerHTML =
             `<div class="date" id="date0">${allData.dates[0]}</div>
             <div class="temp" id="tempResultForecast">${allData.temps[0]}</div>
             <div class="description" id="descriptionForecast">${allData.descriptions[0]}</div>
             <div class="highTemp" id="highTempForecast">${allData.high_temps[0]}</div>
             <div class="lowTemp" id="lowTempForecast">${allData.low_temps[0]}</div>
-            <img class="icon" id="iconResultForecast">${allData.icons[0]}`
-        )
+            <img class="icon" id="iconResultForecast">${allData.icons[0]}`;
+    
 
-        document.getElementById('day1').append(
+        document.getElementById('day1').innerHTML =
             `<div class="date" id="date1">${allData.dates[1]}</div>
             <div class="temp" id="tempResultForecast1">${allData.temps[1]}</div>
             <div class="description" id="descriptionForecast1">${allData.descriptions[1]}</div>
             <div class="highTemp" id="highTempForecast1">${allData.high_temps[1]}</div>
             <div class="lowTemp" id="lowTempForecast1">${allData.low_temps[1]}</div>
-            <img class="icon" id="iconResultForecast1">${allData.icons[1]}`
-        )
+            <img class="icon" id="iconResultForecast1">${allData.icons[1]}`;
+        
 
 
     }

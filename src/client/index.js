@@ -4,7 +4,7 @@ import './styles/body.scss'
 
 
 // add eventlistener with callback action
-window.addEventListener("load", performAction);
+// window.addEventListener("load", performAction);
 document.getElementById('submit').addEventListener('click', handleSubmit);
 
 // moved to index.js as suggested in https://knowledge.udacity.com/questions/435694
