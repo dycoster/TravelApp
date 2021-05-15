@@ -11,7 +11,7 @@ module.exports = {
         library: 'Client'
     },
     devServer: {
-        port: 3000
+        port: 3001
       },
     mode: 'development',
     devtool: 'source-map',
