@@ -59,7 +59,7 @@ async function getWeather (req, res) {
 
     try {
         const data = await response.json()
-
+ 
 // location
 
         projectData.placeName = data.city_name;
@@ -67,7 +67,7 @@ async function getWeather (req, res) {
 
 // forecast data points
         let arrivalDayIndex = req.body.daysTillDep;
-        let returnDayIndex = arrivalDayIndex + req.body.duration;
+        let returnDayIndex = arrivalDayIndex + 7;
 
 
 // an array to store this data:
@@ -77,10 +77,8 @@ async function getWeather (req, res) {
         for(let i = arrivalDayIndex; i <= returnDayIndex; i++ ){
             tripWeatherArray.push(WeatherDataArray[i])
             }
-// Now you can iterate through this array to display the desired data:
+
             projectData.temps = tripWeatherArray.map(dayData => dayData.temp)
-            projectData.low_temps = tripWeatherArray.map(dayData => dayData.low_temp)
-            projectData.high_temps = tripWeatherArray.map(dayData => dayData.high_temp)
             projectData.descriptions = tripWeatherArray.map(dayData => dayData.weather.description)
             projectData.icons = tripWeatherArray.map(dayData => dayData.weather.icon)
             projectData.dates = tripWeatherArray.map(dayData => dayData.valid_date.split("-").reverse().join("-"))

@@ -55,7 +55,7 @@ async function handleSubmit(event) {
 };
 
 function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
-    if (daysTillDep >= 6) {
+    if (daysTillDep > 6) {
         currentDiv.style.display = "flex";
         forecastDiv.style.display = "none";
     } else {
@@ -131,24 +131,49 @@ const updateUI = async () => {
         const allData = await request.json();
         console.log(allData)
         
+        document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, <span>${allData.country};`
+
         document.getElementById('day0').innerHTML =
-            `<div class="date" id="date0">${allData.dates[0]}</div>
-            <div class="temp" id="tempResultForecast">${allData.temps[0]}</div>
-            <div class="description" id="descriptionForecast">${allData.descriptions[0]}</div>
-            <div class="highTemp" id="highTempForecast">${allData.high_temps[0]}</div>
-            <div class="lowTemp" id="lowTempForecast">${allData.low_temps[0]}</div>
-            <img class="icon" id="iconResultForecast" src="https://www.weatherbit.io/static/img/icons/${allData.icons[0]}.png">`;
+            `<div class="date"><span>${allData.dates[0]}</span></div>
+            <div class="temp"><span>${allData.temps[0]}</span> °C</div>
+            <div class="description"><span>${allData.descriptions[0]}</span></div>
+            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[0]}.png">`;
 
         document.getElementById('day1').innerHTML =
-            `<div class="date" id="date1">${allData.dates[1]}</div>
-            <div class="temp" id="tempResultForecast1">${allData.temps[1]}</div>
-            <div class="description" id="descriptionForecast1">${allData.descriptions[1]}</div>
-            <div class="highTemp" id="highTempForecast1">${allData.high_temps[1]}</div>
-            <div class="lowTemp" id="lowTempForecast1">${allData.low_temps[1]}</div>
-            <img class="icon" id="iconResultForecast1" src="https://www.weatherbit.io/static/img/icons/${allData.icons[1]}.png">`;
-        
+            `<div class="date"><span>${allData.dates[1]}</span></div>
+            <div class="temp"><span>${allData.temps[1]}</span> °C</div>
+            <div class="description"><span>${allData.descriptions[1]}</span></div>
+            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[1]}.png">`;
 
+        document.getElementById('day2').innerHTML =
+            `<div class="date"><span>${allData.dates[2]}</span></div>
+            <div class="temp"><span>${allData.temps[2]}</span> °C</div>
+            <div class="description"><span>${allData.descriptions[2]}</span></div>
+            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[2]}.png">`;
 
+        document.getElementById('day3').innerHTML =
+            `<div class="date"><span>${allData.dates[3]}</span></div>
+            <div class="temp"><span>${allData.temps[3]}</span> °C</div>
+            <div class="description"><span>${allData.descriptions[3]}</span></div>
+            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[3]}.png">`;
+
+        document.getElementById('day4').innerHTML =
+            `<div class="date"><span>${allData.dates[4]}</span></div>
+            <div class="temp"><span>${allData.temps[4]}</span> °C</div>
+            <div class="description"><span>${allData.descriptions[4]}</span></div>
+            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[4]}.png">`;
+
+        document.getElementById('day5').innerHTML =
+            `<div class="date"><span>${allData.dates[5]}</span></div>
+            <div class="temp"><span>${allData.temps[5]}</span> °C</div>
+            <div class="description"><span>${allData.descriptions[5]}</span></div>
+            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[5]}.png">`;
+
+        document.getElementById('day6').innerHTML =
+            `<div class="date"><span>${allData.dates[6]}</span></div>
+            <div class="temp"><span>${allData.temps[6]}</span> °C</div>
+            <div class="description"><span>${allData.descriptions[6]}</span></div>
+            <img class="icon" src="https://www.weatherbit.io/static/img/icons/${allData.icons[6]}.png">`;
     }
     catch (error) {
         console.log("error", error);
