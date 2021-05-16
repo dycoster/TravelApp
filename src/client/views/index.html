@@ -17,6 +17,7 @@
     </header>
     <main>
       <div id = "app">
+        <div class="midSection">
         <section class="userInputSection">
           <!-- From Lesson 4 -->
           <form class="uiForm">
@@ -40,83 +41,34 @@
           <div class="location" id="locationResultForecast"></div>
           <div class="duration" id="durationTripForecast"></div>
             <div class="resultContainer" id="current">
+              <h2>Current weather today in:</h2>
               <div class="location" id="locationResultCurrent"></div>
-              <h2>Current weather</h2>
-              <div class="tempBox">
-                <p>Today:</p>
-                <div class="temp" id="tempResultCurrent"></div>
-                <div class="description" id="descriptionCurrent"></div>
-                <div class="highTemp" id="highTempCurrent"></div>
-                <div class="lowTemp" id="lowTempCurrent"></div>
-                <img class="icon" id="iconResultCurrent">
-              </div>
-              <div class="tempBox">
-                <p>Tomorrow:</p>
-                <div class="temp" id="tempResultTomorrow"></div>
-                <div class="description" id="descriptionTomorrow"></div>
-                <div class="highTemp" id="highTempTomorrow"></div>
-                <div class="lowTemp" id="lowTempTomorrow"></div>
-                <img class="icon" id="iconResultTomorrow">
-              </div>
+              <table class="tempBox" >
+                <tr id="today"></tr>
+              </table>
             </div>
-            <div class="resultContainer" id="forecast" style="display:none">
-              <h2>Forecasted weather</h2>
-              <div class="tempBox" id="day0">
-                <div class="date" id="date0"></div>
-                <div class="temp" id="tempResultForecast"></div>
-                <div class="description" id="descriptionForecast"></div>
-                <div class="highTemp" id="highTempForecast"></div>
-                <div class="lowTemp" id="lowTempForecast"></div>
-                <img class="icon" id="iconResultForecast">
-              </div>
-              <div class="tempBox" id="day1">
-                <div class="date" id="date1"></div>
-                <div class="temp" id="tempResultForecast1"></div>
-                <div class="description" id="descriptionForecast1"></div>
-                <div class="highTemp" id="highTempForecast1"></div>
-                <div class="lowTemp" id="lowTempForecast1"></div>
-                <img class="icon" id="iconResultForecast1">
-              </div>
-              <div class="tempBox" id="day2">
-                <div class="date" id="date2"></div>
-                <div class="temp" id="tempResultForecast2"></div>
-                <div class="description" id="descriptionForecast2"></div>
-                <div class="highTemp" id="highTempForecast2"></div>
-                <div class="lowTemp" id="lowTempForecast2"></div>
-                <img class="icon" id="iconResultForecast2">
-              </div>
-              <div class="tempBox" id="day3">
-                <div class="date" id="date3"></div>
-                <div class="temp" id="tempResultForecast3"></div>
-                <div class="description" id="descriptionForecast3"></div>
-                <div class="highTemp" id="highTempForecast3"></div>
-                <div class="lowTemp" id="lowTempForecast3"></div>
-                <img class="icon" id="iconResultForecast3">
-              </div>
-              <div class="tempBox" id="day4">
-                <div class="date" id="date4"></div>
-                <div class="temp" id="tempResultForecast4"></div>
-                <div class="description" id="descriptionForecast4"></div>
-                <div class="highTemp" id="highTempForecast4"></div>
-                <div class="lowTemp" id="lowTempForecast4"></div>
-                <img class="icon" id="iconResultForecast4">
-              </div>
-              <div class="tempBox" id="day5">
-                <div class="date" id="date5"></div>
-                <div class="temp" id="tempResultForecast5"></div>
-                <div class="description" id="descriptionForecast5"></div>
-                <div class="highTemp" id="highTempForecast5"></div>
-                <div class="lowTemp" id="lowTempForecast5"></div>
-                <img class="icon" id="iconResultForecast5">
-              </div>
-              <div class="tempBox" id="day6">
-                <div class="date" id="date6"></div>
-                <div class="temp" id="tempResultForecast6"></div>
-                <div class="description" id="descriptionForecast6"></div>
-                <div class="highTemp" id="highTempForecast6"></div>
-                <div class="lowTemp" id="lowTempForecast6"></div>
-                <img class="icon" id="iconResultForecast6">
-              </div>
+            <div class="resultContainer" id="forecast">
+              <h2>Forecasted weather in:</h2>
+              <div class="location" id="locationResultForecast"></div>
+              <table class="tempBox">
+                <tr id="day0"></tr>
+                <tr id="day1"></tr>
+                <tr id="day2"></tr>
+                <tr id="day3"></tr>
+                <tr id="day4"></tr>
+              </table>
+            </div>
+        </section>
+      </div>
+        <section class="venues" id="fourSquare">
+          <div class="venue" id="venue0">
+          </div>
+          <div class="venue" id="venue1">
+          </div>
+          <div class="venue" id="venue2">
+          </div>
+          <div class="venue" id="venue3">
+          </div>
         </section>
       </div>
     </main>

@@ -20,20 +20,15 @@ function performAction() {
                 }})
                 .then (res => res.json())
                 .then (data => {
-                    console.log(data)
+                    document.getElementById('current').style.display = "flex";
+
                     document.getElementById('locationResultCurrent').innerHTML = `<span>${data.city_name}</span>, ${data.country_code}`;
-                    document.getElementById('iconResultCurrent').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`);
-                    document.getElementById('tempResultCurrent').innerHTML = `<span>${data.data[0].temp}</span>  °C`;
-                    document.getElementById('descriptionCurrent').innerHTML = `<span>${data.data[0].weather.description}</span>`;
-                    document.getElementById('highTempCurrent').innerHTML = `max: <span>${data.data[0].high_temp}</span> °C`;
-                    document.getElementById('lowTempCurrent').innerHTML = `min: <span>${data.data[0].low_temp}</span> °C`;
-
-                    document.getElementById('iconResultTomorrow').setAttribute('src',`https://www.weatherbit.io/static/img/icons/${data.data[1].weather.icon}.png`);
-                    document.getElementById('tempResultTomorrow').innerHTML = `<span>${data.data[1].temp}</span>  °C`;
-                    document.getElementById('descriptionTomorrow').innerHTML = `<span>${data.data[1].weather.description}</span>`;
-                    document.getElementById('highTempTomorrow').innerHTML = `max: <span>${data.data[1].high_temp}</span> °C`;
-                    document.getElementById('lowTempTomorrow').innerHTML = `min: <span>${data.data[1].low_temp}</span> °C`;
-
+                    document.getElementById('today').innerHTML =
+                    `<td class="temp"><span>${data.data[0].temp}</span> °C</td>
+                    <td class="description"><span>${data.data[0].weather.description}</span></td>
+                    <td>
+                        <img class="icon" src="https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png"/>
+                    </td>`;
                 })
         });
     } else {
@@ -44,4 +39,6 @@ function performAction() {
 
 
 export { performAction }
+
+
 
