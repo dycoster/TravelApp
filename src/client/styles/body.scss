@@ -175,6 +175,10 @@ main {
         transition: 1s;
         transition-timing-function: ease-in;
 
+        @media only screen and (max-width: 650px) {
+            width: 95%;
+        }
+
         h2 {
             font-family: $title-font;
             color: $color;
