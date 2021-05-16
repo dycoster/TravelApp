@@ -55,7 +55,7 @@ main {
         flex-direction: row;
         justify-content: space-between;
 
-        @media only screen and (max-width: 950px) {
+        @media only screen and (max-width: 1060px) {
             flex-direction: column;
             align-items: center;
         }
@@ -71,12 +71,6 @@ main {
     flex-direction: column;
 
     @media only screen and (max-width: 950px) {
-        width: 60%;
-        margin-bottom: 5vh;
-        margin-top:  -10vh;
-    }
-
-    @media only screen and (max-width: 650px) {
         width: 95%;
     }
 
@@ -89,11 +83,12 @@ main {
         width: 80%;
         padding: 5vh;
 
-        @media only screen and (max-width: 950px) {
+        @media only screen and (max-width: 1250px) {
             padding: 2vh;
         }
         @media only screen and (max-width: 650px) {
             width: 95%;
+            padding: 5vh;
         }
 
         h2{
@@ -110,7 +105,7 @@ main {
             flex-direction: row;
             align-items: center;
 
-            @media only screen and (max-width: 1050px) {
+            @media only screen and (max-width: 1060px) {
                 width: 90%;
             }
 
@@ -153,10 +148,6 @@ main {
     border-radius: 10px;
     text-shadow: 2px 2px 8px $color_shadow;
     font-size: 1.25rem;
-
-    @media only screen and (max-width: 1050px) {
-        width: 75%;
-    }
 
     @media only screen and (max-width: 950px) {
         width: 95%;
