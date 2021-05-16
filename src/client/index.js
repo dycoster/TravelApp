@@ -1,10 +1,10 @@
-// import { performAction } from './js/app'
+import { performAction } from './js/app'
 import { handleSubmit, toggleDisplay, getImage, getCoords, postCoords, updateUI } from './js/formHandler'
 import './styles/body.scss'
 
 
 // add eventlistener with callback action
-// window.addEventListener("load", performAction);
+window.addEventListener("load", performAction);
 document.getElementById('submit').addEventListener('click', handleSubmit);
 
 // moved to index.js as suggested in https://knowledge.udacity.com/questions/435694
@@ -19,7 +19,7 @@ document.getElementById('submit').addEventListener('click', handleSubmit);
     // }
 
     export {
-        // performAction,
+        performAction,
         handleSubmit,
         toggleDisplay,
         getImage,
