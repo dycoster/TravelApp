@@ -9,8 +9,6 @@ const wbk = process.env.weatherBitKey
 const pbk = process.env.pixabayKey
 const pbUrl = `https://pixabay.com/api/?key=${pbk}`
 
-
-
 // Require Express to run server and routes
 const express = require('express');
 
@@ -60,19 +58,13 @@ async function getWeather (req, res) {
     try {
         const data = await response.json()
 
-// today
-        // projectData.todayTemp = data.data[0].temp
-        // projectData.todayDescription = data.data[0].weather.description
-        // projectData.todayIcon = data.data[0].weather.icon
-        // projectData.todayDate = data.data[0].valid_date.split("-").reverse().join("-")
-
 // location
         projectData.placeName = data.city_name;
         projectData.country = data.country_code;
 
 // forecast data points
         let arrivalDayIndex = req.body.daysTillDep;
-        let returnDayIndex = arrivalDayIndex + 7;
+        let returnDayIndex = arrivalDayIndex + 5;
 
 
 // an array to store this data:

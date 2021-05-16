@@ -34,6 +34,9 @@ async function handleSubmit(event) {
     // PixaBay API request
     await getImage(userDestination)
 
+    // FourSquare API request
+    await getVenues(userDestination)
+
     // GeoNames API request
     await getCoords(userDestination)
 
@@ -54,6 +57,7 @@ async function handleSubmit(event) {
     })
 };
 
+// Toggle results display
 function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
     if (daysTillDep > 6) {
         currentDiv.style.display = "flex";
@@ -85,6 +89,38 @@ async function getImage (userDestination) {
         console.log('error', error)
     }
 }
+
+// fourSquare API request
+async function getVenues(userDestination) {
+
+    const clientId = 'HWHFITMTCVG3XJAVCWLGOZOQHAUWX3TY3L1X3VXWJXXKSTGM';
+    const clientSecret = 'EASKFELNBDDDNZDQXTMEVCRYF1BXYVRMYVKXFKNN0WCYYPBJ';
+    const url = 'https://api.foursquare.com/v2/venues/explore?near=';
+
+    let venueUrl = `${url}${userDestination}&limit=10&client_id=${clientId}&client_secret=${clientSecret}&v=20210222`;
+
+    const response = await fetch(venueUrl);
+        try {
+            const venueData = await response.json();
+            const venues = venueData.response.groups[0].items.map(item => item.venue);
+
+            for (let i = 0; i < 4; i++) {
+                document.getElementById('fourSquare').style.display = "flex";
+                const venueId = `venue${i}`;
+                  document.getElementById(venueId).innerHTML =
+                  `<h3>${venues[i].name}</h3>
+                  <img class="venueimage" src="${venues[i].categories[0].icon.prefix}bg_64${venues[i].categories[0].icon.suffix}"/>
+                  <h3>Address:</h3>
+                  <p>${venues[i].location.address}</p>
+                  <p>${venues[i].location.city}</p>
+                  <p>${venues[i].location.country}</p>`;
+                }
+  }
+
+  catch(error) {
+    console.log(error)
+  }
+};
 
 
 // geoNames API Request
@@ -143,7 +179,7 @@ const updateUI = async () => {
     // Forecasted weather
         document.getElementById('locationResultForecast').innerHTML = `<span>${allData.placeName}</span>, ${allData.country};`
 
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 5; i++) {
             const divId = `day${i}`;
               document.getElementById(divId).innerHTML =
               `<td class="date"><span>${allData.dates[i]}</span></td>

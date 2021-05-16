@@ -7,7 +7,7 @@ $primary-font: 'Lobster Two', cursive;
 $title-font: 'Lobster', cursive;
 $color: #2D1832;
 $bg:rgba($color: #EBF4FA, $alpha: 0.4);
-$bgresult:rgba($color: #EBF4FA, $alpha: 0.6);
+$bgresult:rgba($color: #EBF4FA, $alpha: 0.7);
 $contrast: #e26803;
 
 body {
@@ -23,7 +23,7 @@ body {
     "header header"
     "form results"
     "form results"
-    "form results"
+    "venues venues"
     "footer footer";
     height:100vh;
 }
@@ -48,8 +48,13 @@ main {
 
 #app {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+
+    .midSection {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 // FORM STYLING
@@ -172,4 +177,37 @@ main {
             }
         }
     }
+}
+.venues {
+    grid-area: venues;
+    display: none;
+    flex-direction: row;
+    width: 100%;
+    align-content: center;
+    justify-content: space-evenly;
+    transition: 2s;
+    transition-timing-function: ease-in;
+
+    .venue {
+        width: 18%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        background: $bgresult;
+        border-radius: 10px;
+        margin: 5vh;
+        padding: 3vh;
+
+        h3 {
+            text-shadow: 3px 3px 8px whitesmoke;
+        }
+
+        img {
+            width: 50%;
+            margin: 2vh;
+        }
+    }
+
+
 }
