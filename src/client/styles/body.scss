@@ -220,12 +220,6 @@ main {
     }
 }
 
-@media only screen and (max-width: 580px) {
-    .highTemp, .lowTemp {
-        display: none;
-        }
-    }
-
 @media only screen and (max-width: 400px) {
     .description{
         display: none;
@@ -242,6 +236,12 @@ main {
     transition: 2s;
     transition-timing-function: ease-in;
 
+
+    @media only screen and (max-width: 800px) {
+        flex-direction: column;
+        width: 100%;
+    }
+
     .venue {
         width: 18%;
         display: flex;
@@ -252,6 +252,11 @@ main {
         border-radius: 10px;
         margin: 5vh;
         padding: 3vh;
+
+        @media only screen and (max-width: 800px) {
+            align-self: center;
+            width: 40%;
+        }
 
         h3 {
             text-shadow: 3px 3px 8px whitesmoke;

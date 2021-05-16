@@ -11,7 +11,6 @@ async function handleSubmit(event) {
     console.log(`user entered: ${userReturn}`)
     let currentDiv = document.getElementById('current')
     let forecastDiv = document.getElementById('forecast')
-    let locationForecast = document.getElementById('locationResultForecast')
 
     // Inspiration from https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
 
@@ -41,8 +40,7 @@ async function handleSubmit(event) {
     // GeoNames API request
     await getCoords(userDestination)
 
-    // post userInput to serverside, inspiration from project3 Unsure how to refactor to await and arrow functions..
-    // have tried suggestions from https://stackoverflow.com/questions/42964102/syntax-for-async-arrow-function
+    // post userInput to serverside, inspiration from project3
     .then (function(data) {
         postCoords('http://localhost:3030/add', {
             placeName: data.geonames[0].name,
@@ -64,11 +62,6 @@ function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
     if (daysTillDep > 6) {
         currentDiv.style.display = "flex";
         forecastDiv.style.display = "none";
-        locationForecast.style.display = "none";
-    } else if (daysTillDep < 6 && daysTillRet > 6 ) {
-        currentDiv.style.display = "flex";
-        forecastDiv.style.display = "none";
-        locationForecast.style.display = "none";
     } else {
         currentDiv.style.display = "none";
         forecastDiv.style.display = "flex";
@@ -76,7 +69,7 @@ function toggleDisplay(daysTillDep,currentDiv, forecastDiv) {
 };
 
 // PixaBay API Request
-const getImage = async(userDestination) => {
+async function getImage (userDestination) {
 
 
     let imageUrl = `https://pixabay.com/api/?key=20000501-dad6322171b2d4f4f813207da&q=${userDestination}&image_type=photo`
@@ -131,7 +124,7 @@ async function getVenues(userDestination) {
 
 
 // geoNames API Request
-const getCoords = async(userDestination) => {
+async function getCoords(userDestination) {
 
     let geoUrl = `http://api.geonames.org/searchJSON?q=${userDestination}&maxRows=1&username=dycoster`;
 
