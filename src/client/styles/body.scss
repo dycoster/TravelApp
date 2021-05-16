@@ -20,8 +20,8 @@ body {
     "form results"
     "form results"
     "venues venues"
-    "footer footer";
-    height:100vh;
+    "venues venues";
+    height: 100vh;
 }
 
 header {
@@ -105,7 +105,7 @@ main {
 
         div {
             padding: 1rem;
-            width: 100%;
+            width: 80%;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -267,12 +267,6 @@ main {
 #locationResultForecast {
     padding-top: 5vh;
 }
-
-@media only screen and (max-width: 580px) {
-    .highTemp, .lowTemp {
-        display: none;
-        }
-    }
 
 @media only screen and (max-width: 400px) {
     .description{
