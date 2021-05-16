@@ -17,14 +17,14 @@ body {
     background: url("https://cdn.pixabay.com/photo/2015/10/12/14/55/airplane-983991_960_720.jpg") fixed no-repeat;
     background-size: cover;
     display: grid;
-    grid-auto-rows: minmax(20vh, auto);
+    grid-auto-rows: minmax(10vh, auto);
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
     "header header"
     "form results"
     "form results"
     "venues venues"
-    "footer footer";
+    "venues venues";
     height:100vh;
 }
 
@@ -109,13 +109,13 @@ main {
 
         div {
             padding: 1rem;
-            width: 100%;
+            width: 80%;
             display: flex;
             flex-direction: row;
             align-items: center;
 
             @media only screen and (max-width: 1050px) {
-                width: 90%;
+                width: 100%;
             }
 
             input {
@@ -219,12 +219,6 @@ main {
     }
 }
 
-@media only screen and (max-width: 580px) {
-    .highTemp, .lowTemp {
-        display: none;
-        }
-    }
-
 @media only screen and (max-width: 400px) {
     .description{
         display: none;
@@ -238,8 +232,11 @@ main {
     width: 100%;
     align-content: center;
     justify-content: space-evenly;
-    transition: 2s;
-    transition-timing-function: ease-in;
+
+    @media only screen and (max-width: 800px) {
+            flex-direction: column;
+            width: 80%;
+    }
 
     .venue {
         width: 18%;
@@ -251,6 +248,13 @@ main {
         border-radius: 10px;
         margin: 5vh;
         padding: 3vh;
+        transition: 1s;
+        transition-timing-function: ease-in;
+
+        @media only screen and (max-width: 800px) {
+                width: 40%;
+                align-self: center;
+        }
 
         h3 {
             text-shadow: 3px 3px 8px whitesmoke;
