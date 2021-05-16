@@ -74,6 +74,15 @@ main {
     align-items: center;
     flex-direction: column;
 
+    @media only screen and (max-width: 950px) {
+        width: 60%;
+        margin-bottom: 5vh;
+        margin-top:  -10vh;
+    }
+
+    @media only screen and (max-width: 650px) {
+        width: 95%;
+    }
 
     form {
         display: flex;
