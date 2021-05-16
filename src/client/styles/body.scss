@@ -1,11 +1,7 @@
-* {
-    margin: 0;
-    border: 0;
-    box-sizing: border-box;
-}
 $primary-font: 'Lobster Two', cursive;
 $title-font: 'Lobster', cursive;
 $color: #2D1832;
+$color_shadow: whitesmoke;
 $bg:rgba($color: #EBF4FA, $alpha: 0.4);
 $bgresult:rgba($color: #EBF4FA, $alpha: 0.7);
 $contrast: #e26803;
@@ -17,7 +13,7 @@ body {
     background: url("https://cdn.pixabay.com/photo/2015/10/12/14/55/airplane-983991_960_720.jpg") fixed no-repeat;
     background-size: cover;
     display: grid;
-    grid-auto-rows: minmax(10vh, auto);
+    grid-auto-rows: minmax(20vh, auto);
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
     "header header"
@@ -25,7 +21,7 @@ body {
     "form results"
     "venues venues"
     "venues venues";
-    height:100vh;
+    height: 100vh;
 }
 
 header {
@@ -102,7 +98,7 @@ main {
 
         h2{
             font-family: $title-font;
-            text-shadow: 3px 3px 8px whitesmoke;
+            text-shadow: 3px 3px 8px $color_shadow;
             padding-bottom: 1.5rem;
             text-align: center;
         }
@@ -115,26 +111,27 @@ main {
             align-items: center;
 
             @media only screen and (max-width: 1050px) {
-                width: 100%;
+                width: 90%;
             }
 
             input {
                 height: 2rem;
                 width: 100%;
                 border-radius: 5px;
+                border-color: $color_shadow;
             }
         }
     }
 }
 
 #submit {
-    color: whitesmoke;
+    color: $color_shadow;
     background-color: $contrast;
 }
 
 #submit:hover {
     color: $contrast;
-    background-color: whitesmoke;
+    background-color: $color_shadow;
     border: 1px solid $contrast;
 }
 
@@ -150,9 +147,12 @@ main {
     flex-direction: column;
     align-items: center;
     width: 60%;
+    margin: 0 10vh;
     font-family: $title-font;
     color: $color;
-    text-shadow: 2px 2px 8px whitesmoke;
+    border-radius: 10px;
+    background: $bgresult;
+    text-shadow: 2px 2px 8px $color_shadow;
     font-size: 1.25rem;
 
     @media only screen and (max-width: 1050px) {
@@ -191,6 +191,7 @@ main {
                 font-size: 1.35rem;
             }
         }
+        
         .tempBox {
             font-family: $primary-font;
             font-size: 1rem;
@@ -219,6 +220,12 @@ main {
     }
 }
 
+@media only screen and (max-width: 580px) {
+    .highTemp, .lowTemp {
+        display: none;
+        }
+    }
+
 @media only screen and (max-width: 400px) {
     .description{
         display: none;
@@ -232,11 +239,8 @@ main {
     width: 100%;
     align-content: center;
     justify-content: space-evenly;
-
-    @media only screen and (max-width: 800px) {
-            flex-direction: column;
-            width: 80%;
-    }
+    transition: 2s;
+    transition-timing-function: ease-in;
 
     .venue {
         width: 18%;
@@ -248,13 +252,6 @@ main {
         border-radius: 10px;
         margin: 5vh;
         padding: 3vh;
-        transition: 1s;
-        transition-timing-function: ease-in;
-
-        @media only screen and (max-width: 800px) {
-                width: 40%;
-                align-self: center;
-        }
 
         h3 {
             text-shadow: 3px 3px 8px whitesmoke;
@@ -264,5 +261,15 @@ main {
             width: 50%;
             margin: 2vh;
         }
+    }
+}
+
+#locationResultForecast {
+    padding-top: 5vh;
+}
+
+@media only screen and (max-width: 400px) {
+    .description{
+        display: none;
     }
 }
