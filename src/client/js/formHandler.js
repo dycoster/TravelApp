@@ -104,7 +104,7 @@ async function getVenues(userDestination) {
             const venueData = await response.json();
             const venues = venueData.response.groups[0].items.map(item => item.venue);
 
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 3; i++) {
                 document.getElementById('fourSquare').style.display = "flex";
                 const venueId = `venue${i}`;
                   document.getElementById(venueId).innerHTML =

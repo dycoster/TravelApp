@@ -31,14 +31,12 @@ header {
     justify-content: center;
     align-items: center;
     text-shadow: 3px 3px 8px whitesmoke;
-
-    @media only screen and (max-width: 950px) {
-        height: 10vh;
-    }
+    height: 10vh;
 }
 
 main {
     grid-area: 2 / 1 / 6 / 3;
+    margin-top: -10vh;
 }
 
 
@@ -81,14 +79,14 @@ main {
         background: $bg;
         border-radius: 10px;
         width: 80%;
-        padding: 5vh;
+        padding: 3vh;
 
         @media only screen and (max-width: 1250px) {
             padding: 2vh;
         }
         @media only screen and (max-width: 650px) {
             width: 95%;
-            padding: 5vh;
+            padding: 3vh;
         }
 
         h2{
@@ -99,7 +97,7 @@ main {
         }
 
         div {
-            padding: 1rem;
+            padding: 0.5rem;
             width: 80%;
             display: flex;
             flex-direction: row;
@@ -158,8 +156,7 @@ main {
         flex-direction: column;
         align-items: center;
         width: 85%;
-        margin-bottom: 2.5vh;
-        padding: 4vh;
+        padding: 3vh;
         border-radius: 10px;
         background: $bgresult;
         transition: 1s;
@@ -191,7 +188,7 @@ main {
                 text-align: center;
 
                 .icon{
-                    height: 6vh;
+                    height: 5vh;
                 }
                 .temp {
                     span{
@@ -233,15 +230,15 @@ main {
     }
 
     .venue {
-        width: 18%;
+        width: 30%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        background: rgba($color: #F2D57E, $alpha: 1);
+        background: linear-gradient(#F2D57E, #F2B705 );
         border-radius: 10px;
         margin: 5vh;
-        padding: 3vh;
+        padding: 2vh;
 
         @media only screen and (max-width: 800px) {
             align-self: center;
@@ -253,8 +250,8 @@ main {
         }
 
         img {
-            width: 50%;
-            margin: 2vh;
+            width: 35%;
+            margin: 1.5vh;
         }
     }
 }
